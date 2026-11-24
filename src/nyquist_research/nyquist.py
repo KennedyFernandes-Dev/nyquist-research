@@ -107,6 +107,41 @@ def _contour(
     return np.concatenate(parts)
 
 
+def _refine_mapping(system: TransferFunction, contour: _COMPLEX) -> tuple[_COMPLEX, _COMPLEX, bool]:
+    """Bisect edges near the critical point or with rapidly turning images."""
+    values = system.evaluate(contour)
+    for _ in range(20):
+        midpoints = contour[:-1] + np.diff(contour) / 2
+        mid_values = system.evaluate(midpoints)
+        left = 1 + values[:-1]
+        mid = 1 + mid_values
+        right = 1 + values[1:]
+        with np.errstate(invalid="ignore", over="ignore"):
+            am, bm, cm = np.abs(left), np.abs(mid), np.abs(right)
+            first = np.angle(mid) - np.angle(left)
+            second = np.angle(right) - np.angle(mid)
+            angles = np.maximum(
+                np.abs((first + pi) % (2 * pi) - pi),
+                np.abs((second + pi) % (2 * pi) - pi),
+            )
+            curvature = np.abs(mid - (left / 2 + right / 2))
+            distance = np.minimum(np.minimum(am, bm), cm)
+            split = (angles > pi / 8) | (curvature > 0.25 * distance)
+        if not np.any(split):
+            return contour, values, True
+        if len(contour) + int(split.sum()) > 150_000:
+            break
+        positions = np.cumsum(np.r_[0, 1 + split])
+        next_contour = np.empty(positions[-1] + 1, dtype=np.complex128)
+        next_values = np.empty_like(next_contour)
+        next_contour[positions] = contour
+        next_contour[positions[:-1][split] + 1] = midpoints[split]
+        next_values[positions] = values
+        next_values[positions[:-1][split] + 1] = mid_values[split]
+        contour, values = next_contour, next_values
+    return contour, values, False
+
+
 def nyquist(
     system: TransferFunction,
     *,
@@ -158,16 +193,25 @@ def nyquist(
     boundary_values = system.evaluate(1j * np.r_[0, markers])
     contact = np.any(np.abs(boundary_values + 1) <= critical_tol * 0.01)
     axis = _axis_centers(poles, axis_tol)
+
+    hidden_axis = bool(axis.size) and (
+        system.gain == 0
+        or system.numerator == (0.0,)
+        or np.any(
+            np.abs(system.zeros[:, None] - 1j * axis) <= axis_tol * np.maximum(1.0, np.abs(axis))
+        )
+    )
     radii = _indent_radii(axis, poles, radius, axis_tol)
     contour = mapped = empty
     current: Winding | None = None
     previous: Winding | None = None
+    previous_resolved = False
     for level in range(refinements):
         contour = _contour(
             system, radius, points * 2**level, axis, radii / 2**level, np.r_[-markers, markers]
         )
-        mapped = system.evaluate(contour)
         if contact:
+            mapped = system.evaluate(contour)
             return NyquistResult(
                 p,
                 None,
@@ -180,6 +224,7 @@ def nyquist(
                 "A resposta cruza −1 no eixo imaginário dentro da tolerância de fronteira.",
                 refinements=level + 1,
             )
+        contour, mapped, resolved = _refine_mapping(system, contour)
         try:
             current = winding_number(mapped)
         except ValueError:
@@ -187,6 +232,8 @@ def nyquist(
             continue
         if (
             previous is not None
+            and resolved
+            and previous_resolved
             and current.turns == previous.turns
             and max(current.max_angle, previous.max_angle) < pi / 3
             and min(current.min_distance, previous.min_distance) > critical_tol
@@ -194,20 +241,26 @@ def nyquist(
             and current.turns + p >= 0
         ):
             z = current.turns + p
+            status = "unstable" if z else "stable"
+            reason = "Contagem consistente após refinamento do contorno."
+            if hidden_axis:
+                status = "unstable" if z else "marginal"
+                reason += " O modelo inclui um modo cancelado no eixo imaginário."
             return NyquistResult(
                 p,
                 current.turns,
                 z,
-                "stable" if z == 0 else "unstable",
+                status,
                 contour,
                 mapped,
                 radius,
                 current.min_distance,
-                "Contagem consistente após refinamento do contorno.",
+                reason,
                 current.max_angle,
                 level + 1,
             )
         previous = current
+        previous_resolved = resolved
     return NyquistResult(
         p,
         None,

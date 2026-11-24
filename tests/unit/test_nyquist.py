@@ -91,3 +91,21 @@ def test_positive_first_order_always_stable(pole, gain):
 def test_horner_ratio_at_large_complex_arguments():
     system = TransferFunction([1, 0, 0], [1, 0, 0, 0, 1])
     assert system.evaluate(1e150j) == pytest.approx(-1e-300)
+
+
+def test_axis_mode_is_preserved_when_cancelled():
+    for system in (
+        TransferFunction([0], [1, 0]),
+        TransferFunction([1, 0], [1, 1, 0]),
+    ):
+        result = nyquist(system)
+        assert result.status == "marginal"
+        assert result.z == 0
+        assert "cancelado" in result.reason
+
+
+@pytest.mark.parametrize("delay, expected", [(1.2, 0), (4.8, 2), (5.0, 4), (10.0, 6)])
+def test_local_refinement_resolves_thin_and_multiple_turns(delay, expected):
+    result = nyquist(TransferFunction([2], [1, 1], delay=delay))
+    assert result.z == expected
+    assert result.refinements == 2
