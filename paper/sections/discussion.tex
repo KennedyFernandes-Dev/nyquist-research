@@ -1,0 +1,87 @@
+\section{Aplicação prática}
+A interface em Streamlit e Plotly permite variar em conjunto
+os coeficientes ou os polos e zeros, o ganho e o atraso.
+Nyquist, Bode, Routh, lugar das raízes e resposta ao degrau
+consomem as mesmas entradas e mostram a origem do modelo
+racional ou exponencial usado. A exportação JSON conserva
+a classificação, a convenção empregada, as margens e as amostras.
+Testes de integração exercitam a troca de plantas, a atualização
+dos dados e a condição de realimentação algébrica singular.
+
+Uma bancada simulada separada usa a planta $1/(s+1)$ e um PID
+com derivada filtrada, de parâmetros $K_p=2$, $K_i=1$,
+$K_d=0{,}1$ e $T_f=0{,}04$ s. O modelo contínuo da função de
+laço é
+\begin{equation}
+L_{\mathrm{PID}}(s)=
+\frac{0{,}18s^2+2{,}04s+1}{0{,}04s^3+1{,}04s^2+s}e^{-s\tau}.
+\end{equation}
+A primeira fronteira prevista por Nyquist foi $1{,}05906$ s a
+$1{,}78789$ rad/s. Em 90 s simulados a 50 Hz, os atrasos
+constantes quantizados de 0,80 e 1,32 s produziram, respectivamente,
+acomodação e crescimento do erro. Os RMS finais foram
+$1{,}16\times10^{-9}$ e aproximadamente $3{,}76\times10^3$.
+A repetição a 100 Hz preservou essa distinção. Nos cenários
+com variação uniforme de até $\pm0{,}10$ s, o desvio-padrão
+do atraso na fila foi próximo de 0,058 s. O comportamento
+observado na simulação segue na Fig.~\ref{fig:hil}. A previsão
+de Nyquist se refere ao atraso constante, enquanto a simulação
+com jitter inclui discretização, fila e descarte de comandos
+fora de ordem. Os resultados correspondem a um modelo linear
+sem saturação. O código de comunicação para bancada permanece
+sem medição em dispositivo físico.
+
+\begin{figure*}[!t]
+\centering
+\figfile{0.89\textwidth}{hil-pid.pdf}
+\caption{Erro no PID simulado para atrasos constantes e variáveis,
+abaixo e acima da fronteira contínua prevista.}
+\label{fig:hil}
+\end{figure*}
+
+\section{Discussão e limitações}
+O estudo confirma que os métodos têm domínios e custos distintos.
+Routh responde com uma contagem absoluta em um polinômio e usa
+$O(n^2)$ operações de tabela na recorrência usual. O custo em
+aritmética racional depende do crescimento de numeradores e
+denominadores. Lugar das raízes resolve a dinâmica em vários
+ganhos. Com matrizes densas e atribuição cúbica, o modelo de
+custo típico é $O(gn^3)$ para $g$ amostras de ganho. O erro
+pode crescer perto de raízes repetidas e a associação depende
+da resolução da varredura.
+
+A avaliação por Horner em $M$ pontos custa $O(Mn)$ e a
+contagem de envoltórios custa $O(M)$ para uma malha dada.
+O número de pontos depende do refinamento, da escala dos
+polos, do atraso e da distância a $-1$. O cálculo dos polos
+abertos e candidatos de cruzamento adiciona custo de raízes
+polinomiais. Em Bode, a busca de margens racionais também
+resolve polinômios em $\omega^2$, e no caso atrasado precisa
+delimitar a banda de cruzamentos de fase. Essas diferenças
+impedem atribuir superioridade por uma única medida de tempo.
+
+Os resultados concentram-se em sistemas contínuos SISO e
+em uma estação de trabalho. A validação exclui atrasos
+neutros fora da cota adotada, cancelamentos numericamente
+ambíguos e garantias de estabilidade sob jitter arbitrário.
+Uma malha refinada pode perder uma transição entre amostras.
+A estimativa de precisão para polinômios agrupados indica
+que escala, tolerância e precisão de coeficientes merecem
+atenção mesmo quando o estado de estabilidade concorda.
+Em uma aplicação com dispositivo físico, seria necessário
+medir atraso, jitter e latência de processamento, incluir
+saturação e comparar séries em hardware.
+
+\section{Conclusão}
+A classificação nominal foi consistente nos quatro sistemas.
+A contagem em B tornou explícito como um laço aberto
+instável pode ser estabilizado pelo ganho. O zero no
+semiplano direito de C apareceu no comportamento transitório,
+e a comparação em D quantificou o erro das aproximações de
+Padé perto da fronteira. A concordância dos métodos depende
+das hipóteses do modelo, da banda e da precisão numérica
+disponível. A ferramenta relaciona o diagnóstico aos
+contornos, margens e raízes que o sustentam e disponibiliza
+os dados para repetir a análise. Ensaios físicos e métodos
+de contorno com cotas locais mais fortes são extensões do
+trabalho.

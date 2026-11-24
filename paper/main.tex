@@ -1,0 +1,61 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage[english,brazil]{babel}
+\usepackage{amsmath,amssymb,booktabs,graphicx,cite,url}
+\graphicspath{{../results/figures/}}
+\newcommand{\imagunit}{\mathrm{j}}
+\newcommand{\figfile}[2]{\includegraphics[width=#1]{#2}}
+\input{authors}
+\input{tables.generated}
+\title{Análise Computacional e Comparativa de Critérios de Estabilidade em Sistemas Dinâmicos}
+
+\begin{document}
+\maketitle
+\renewcommand{\abstractname}{Resumo}
+\begin{abstract}
+Este trabalho implementa e compara Nyquist, Routh--Hurwitz, lugar das raízes
+e Bode para laços lineares, contínuos e de uma entrada e uma saída. O núcleo
+em Python avalia a resposta complexa, conta envoltórios em um contorno fechado
+e calcula cruzamentos e margens. O estudo usa quatro plantas que representam
+um modelo estável de terceira ordem, uma planta instável, um zero no semiplano
+direito e um atraso de transporte. Medições em ordens 5, 10 e 20 distinguem
+tempo de execução, condicionamento e erro em raízes. A comparação com soluções
+analíticas e ferramentas independentes permite verificar a contagem de polos,
+as margens e a aproximação de Padé. \input{sections/abstract-result}
+\end{abstract}
+\renewcommand{\IEEEkeywordsname}{Palavras-chave}
+\begin{IEEEkeywords}
+estabilidade, Nyquist, Routh--Hurwitz, lugar das raízes, Bode, atraso de transporte.
+\end{IEEEkeywords}
+{\selectlanguage{english}
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+This work implements and compares Nyquist, Routh--Hurwitz, root locus, and
+Bode analysis for continuous-time, single-input single-output feedback loops.
+A Python core evaluates the complex response, counts encirclements on a
+closed contour, and computes crossover frequencies and stability margins.
+Four plants cover an open-loop stable third-order model, an unstable plant,
+a right-half-plane zero, and a transport delay. Experiments at orders 5, 10,
+and 20 distinguish runtime, conditioning, and root error. Analytical
+solutions and independent software provide reference values for pole counts,
+margins, and Padé approximation. \input{sections/abstract-result-en}
+\end{abstract}
+\renewcommand{\IEEEkeywordsname}{Keywords}
+\begin{IEEEkeywords}
+stability, Nyquist, Routh--Hurwitz, root locus, Bode, transport delay.
+\end{IEEEkeywords}
+}
+\input{sections/foundation}
+\input{sections/method}
+\input{sections/results}
+\input{sections/discussion}
+\section*{Declaração de uso de inteligência artificial}
+O OpenAI Codex foi usado para propor a metodologia, implementar e
+revisar o código, executar testes e experimentos, e redigir e revisar
+o resumo e as seções do artigo. Os gráficos foram gerados por scripts
+a partir dos dados da execução. O repositório registra os comandos,
+as fontes e os resultados de referência para conferência.
+\IEEEtriggeratref{6}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

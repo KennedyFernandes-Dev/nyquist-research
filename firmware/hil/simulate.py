@@ -201,7 +201,7 @@ def run(root):
             elapsed = perf_counter() - start
             results = summarize(case, records, elapsed)
             if writer is None:
-                writer = csv.DictWriter(csv_file, fieldnames=list(records[0]))
+                writer = csv.DictWriter(csv_file, fieldnames=list(records[0]), lineterminator="\n")
                 writer.writeheader()
             writer.writerows(records)
             records_by_case[case.name] = records

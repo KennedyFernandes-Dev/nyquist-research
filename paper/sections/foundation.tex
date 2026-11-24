@@ -1,0 +1,110 @@
+\section{Introdução}
+Um sistema de realimentação pode estabilizar uma planta com um polo no
+semiplano direito. O mesmo laço pode perder estabilidade quando a comunicação
+introduz atraso suficiente para alterar a fase relativa entre entrada e
+saída. Esse efeito aparece em sistemas de controle em rede, nos quais o
+tempo de transporte, a amostragem e a variação temporal da comunicação
+afetam a malha \cite{zhang2001}. A pergunta investigada é em que condições
+quatro métodos clássicos concordam sobre estabilidade e que erros emergem
+quando a análise exige amostragem de frequências ou operações com
+polinômios de ordem elevada.
+
+A comparação usa uma implementação que mantém a análise de controle no
+núcleo e isola as referências computacionais na validação. Os experimentos
+avaliam o efeito de um polo instável, de um zero de fase não mínima e do
+atraso puro. A ferramenta expõe os valores usados no diagnóstico e oferece
+uma interface para variar os parâmetros e reproduzir os diagramas.
+
+\section{Trabalhos relacionados}
+Nyquist formulou a análise de regeneração em função da resposta de malha
+\cite{nyquist1932}. Bode sistematizou o desenho de amplificadores realimentados
+por magnitude e fase \cite{bode1945}. A contagem algébrica de Routh
+\cite{routh1877} e o método geométrico de Evans \cite{evans1950} abordam a
+mesma questão a partir do polinômio característico. Ogata e Nise organizam
+esses métodos em uma sequência para sistemas contínuos
+\cite{ogata2010,nise2017}. O capítulo de análise em frequência de Åström e
+Murray relaciona Nyquist, margens e sensibilidade \cite{astrom2008}.
+Para o atraso, a aproximação racional de Padé dá um caminho para métodos
+polinomiais \cite{baker1996}. Em ordem elevada, a sensibilidade das raízes
+a perturbações nos coeficientes pode dominar o erro observado
+\cite{wilkinson1959}. Esses resultados orientam a escolha das referências
+e das métricas deste estudo.
+
+\section{Fundamentação teórica}
+Considere a realimentação unitária negativa de uma planta contínua própria,
+com coeficientes reais, ganho escalar $K$ e atraso $\tau\ge 0$.
+\begin{equation}
+L(s)=K\frac{B(s)}{A(s)}e^{-s\tau},\qquad
+T(s)=\frac{L(s)}{1+L(s)} .
+\label{eq:loop}
+\end{equation}
+Na parte racional, os polos e zeros são as raízes de $A$ e $B$,
+respectivamente. Com $\tau=0$, o polinômio característico é
+$C(s)=A(s)+KB(s)$. A análise preserva a ordem de $A$ e os fatores comuns,
+para que um modo interno cancelado na análise entrada--saída permaneça
+no modelo algébrico. Para estabilidade assintótica, os polos de malha
+fechada devem ficar no semiplano esquerdo.
+
+\subsection{Mapeamento e princípio do argumento}
+O contorno segue o eixo de $-\imagunit R$ a $+\imagunit R$ e volta pelo arco à direita.
+Indentam-se polos sobre o eixo com semicírculos que os excluem da
+região contada. Para $F=1+L$, a variação de argumento no contorno
+horário é $-2\pi(Z-P)$, onde $P$ e $Z$ contam polos e zeros no interior.
+O mapeamento por $L$ escreve a mesma contagem em torno de $-1$.
+\begin{equation}
+\begin{aligned}
+Z &= N+P,\\
+N &= -\frac{1}{2\pi}\sum_{k}\arg
+ \left(\overline{u_k}\,u_{k+1}\right),\\
+u_k &= 1+L(s_k).
+\end{aligned}
+\label{eq:nyquist}
+\end{equation}
+A fórmula discreta fecha o polígono e preserva a convenção de que
+envoltórios horários contribuam positivamente. Ela aproxima a
+variação contínua quando o mapeamento entre amostras é resolvido
+\cite{astrom2008}.
+
+\subsection{Routh--Hurwitz, lugar das raízes e Bode}
+A tabela de Routh dispõe os coeficientes alternados nas duas primeiras
+linhas. Se $r_{i,j}$ é a entrada da linha $i$ e coluna $j$,
+\[
+r_{i,j}=r_{i-2,j+1}
+-\frac{r_{i-2,0}}{r_{i-1,0}}\,r_{i-1,j+1}.
+\]
+As mudanças de sinal na primeira coluna contam raízes no semiplano
+direito. Um pivô nulo exige tratar o limite de um valor positivo.
+Uma linha inteira nula exige a derivada do polinômio auxiliar
+\cite{routh1877,nise2017}. O lugar das raízes mostra o conjunto das
+raízes de $A+KB$ para ganhos sucessivos e permite observar
+amortecimento, frequência natural e cruzamentos \cite{evans1950}.
+
+O diagrama de Bode mostra $20\log_{10}|L(\imagunit\omega)|$ e a fase
+desenrolada. Em um cruzamento de fase $\omega_p$ no semieixo real
+negativo, a margem de ganho é $1/|L(\imagunit\omega_p)|$. Em um cruzamento
+de módulo unitário $\omega_g$, a margem de fase é o afastamento
+angular de $-180^{\circ}$ na convenção local. Um ganho com margem
+inferior a um pode indicar uma fronteira ao reduzir $K$. Quando
+existem vários cruzamentos, cada um descreve uma fronteira candidata.
+A classificação global usa a contagem de Nyquist ou os polos, conforme
+o modelo \cite{bode1945,astrom2008}.
+
+\subsection{Atraso e aproximação racional}
+A exponencial acrescenta $-\omega\tau$ rad à fase e preserva o módulo
+no eixo. A fronteira pode ocorrer em $\omega>0$ quando
+$|L_0(\imagunit\omega)|=1$ e
+\begin{equation}
+\arg L_0(\imagunit\omega)-\omega\tau=(2q+1)\pi,
+\qquad q\in\mathbb{Z}.
+\label{eq:delay}
+\end{equation}
+Aqui $L_0$ é a função sem atraso. Para aproximar o atraso no plano
+$s$, o Padé diagonal de ordem $m$ usa $Q_m(-s\tau)/Q_m(s\tau)$.
+Se $c_k$ são os coeficientes crescentes de $Q_m$, então
+$c_0=1$ e
+\[
+c_{k+1}=c_k\frac{m-k}{(k+1)(2m-k)}.
+\]
+A série coincide com a da exponencial até a potência $2m$.
+O módulo dessa aproximação no eixo é unitário. A fase e os polos
+fechados dependem da ordem e da banda de avaliação \cite{baker1996}.

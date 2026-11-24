@@ -1,0 +1,171 @@
+{
+  "mode": "software_simulation",
+  "hardware_connected": false,
+  "seed": 20261124,
+  "simulation_duration_s": 90.0,
+  "design": {
+    "kp": 2.0,
+    "ki": 1.0,
+    "kd": 0.1,
+    "filter_time_s": 0.04
+  },
+  "continuous_delay_prediction": {
+    "delay": 1.05905567399771,
+    "frequency": 1.787887825679066,
+    "status": "finite",
+    "reason": "Primeira raiz imaginária positiva com migração para o semiplano direito.",
+    "candidates": [
+      {
+        "delay": 1.05905567399771,
+        "frequency": 1.787887825679066,
+        "direction": "destabilizing"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "constant_below",
+      "sample_time_s": 0.02,
+      "nominal_delay_s": 0.7942917554982825,
+      "jitter_half_width_s": 0,
+      "sample_frequency_hz": 50.0,
+      "simulation_wall_time_s": 0.021045042001787806,
+      "samples": 4501,
+      "constant_nominal_nyquist": "stable",
+      "constant_nominal_nyquist_rhp": 0,
+      "requested_delay_mean_s": 0.7942917554982825,
+      "queued_delay_mean_s": 0.7999999999999998,
+      "queued_delay_std_s": 0.0,
+      "queued_delay_range_s": [
+        0.8,
+        0.8
+      ],
+      "applied_delay_mean_s": 0.7999999999999998,
+      "reordered_drops": 0,
+      "max_abs_error": 1.0,
+      "earlier_rms_error": 1.3037372400467637e-08,
+      "final_rms_error": 1.161611714522134e-09,
+      "observed": "settled"
+    },
+    {
+      "name": "constant_above",
+      "sample_time_s": 0.02,
+      "nominal_delay_s": 1.3026384790171832,
+      "jitter_half_width_s": 0,
+      "sample_frequency_hz": 50.0,
+      "simulation_wall_time_s": 0.010094291999848792,
+      "samples": 4501,
+      "constant_nominal_nyquist": "unstable",
+      "constant_nominal_nyquist_rhp": 2,
+      "requested_delay_mean_s": 1.302638479017183,
+      "queued_delay_mean_s": 1.3199999999999998,
+      "queued_delay_std_s": 0.0,
+      "queued_delay_range_s": [
+        1.32,
+        1.32
+      ],
+      "applied_delay_mean_s": 1.32,
+      "reordered_drops": 0,
+      "max_abs_error": 7431.436035630227,
+      "earlier_rms_error": 1322.9019695370391,
+      "final_rms_error": 3763.3705106262805,
+      "observed": "growing"
+    },
+    {
+      "name": "jitter_below",
+      "sample_time_s": 0.02,
+      "nominal_delay_s": 0.7942917554982825,
+      "jitter_half_width_s": 0.1,
+      "sample_frequency_hz": 50.0,
+      "simulation_wall_time_s": 0.010309291999874404,
+      "samples": 4501,
+      "constant_nominal_nyquist": "stable",
+      "constant_nominal_nyquist_rhp": 0,
+      "requested_delay_mean_s": 0.7939087465806688,
+      "queued_delay_mean_s": 0.8039146856254166,
+      "queued_delay_std_s": 0.05832671055600925,
+      "queued_delay_range_s": [
+        0.7000000000000001,
+        0.9
+      ],
+      "applied_delay_mean_s": 0.7474536464771323,
+      "reordered_drops": 2408,
+      "max_abs_error": 1.0,
+      "earlier_rms_error": 3.0186045154406514e-10,
+      "final_rms_error": 1.7498999598863695e-11,
+      "observed": "settled"
+    },
+    {
+      "name": "jitter_above",
+      "sample_time_s": 0.02,
+      "nominal_delay_s": 1.3026384790171832,
+      "jitter_half_width_s": 0.1,
+      "sample_frequency_hz": 50.0,
+      "simulation_wall_time_s": 0.010353833000408486,
+      "samples": 4501,
+      "constant_nominal_nyquist": "unstable",
+      "constant_nominal_nyquist_rhp": 2,
+      "requested_delay_mean_s": 1.3022554700995694,
+      "queued_delay_mean_s": 1.3121528549211285,
+      "queued_delay_std_s": 0.05808736492142061,
+      "queued_delay_range_s": [
+        1.22,
+        1.42
+      ],
+      "applied_delay_mean_s": 1.2561691542288558,
+      "reordered_drops": 2376,
+      "max_abs_error": 1999.8317340927624,
+      "earlier_rms_error": 452.0102917106046,
+      "final_rms_error": 1075.3623608950122,
+      "observed": "growing"
+    },
+    {
+      "name": "fine_below",
+      "sample_time_s": 0.01,
+      "nominal_delay_s": 0.7942917554982825,
+      "jitter_half_width_s": 0,
+      "sample_frequency_hz": 100.0,
+      "simulation_wall_time_s": 0.01996924999912153,
+      "samples": 9001,
+      "constant_nominal_nyquist": "stable",
+      "constant_nominal_nyquist_rhp": 0,
+      "requested_delay_mean_s": 0.7942917554982825,
+      "queued_delay_mean_s": 0.7999999999999998,
+      "queued_delay_std_s": 0.0,
+      "queued_delay_range_s": [
+        0.8,
+        0.8
+      ],
+      "applied_delay_mean_s": 0.7999999999999999,
+      "reordered_drops": 0,
+      "max_abs_error": 1.0,
+      "earlier_rms_error": 1.8606028258428267e-08,
+      "final_rms_error": 1.775888513882335e-09,
+      "observed": "settled"
+    },
+    {
+      "name": "fine_above",
+      "sample_time_s": 0.01,
+      "nominal_delay_s": 1.3026384790171832,
+      "jitter_half_width_s": 0,
+      "sample_frequency_hz": 100.0,
+      "simulation_wall_time_s": 0.020251583999197464,
+      "samples": 9001,
+      "constant_nominal_nyquist": "unstable",
+      "constant_nominal_nyquist_rhp": 2,
+      "requested_delay_mean_s": 1.3026384790171832,
+      "queued_delay_mean_s": 1.31,
+      "queued_delay_std_s": 0.0,
+      "queued_delay_range_s": [
+        1.31,
+        1.31
+      ],
+      "applied_delay_mean_s": 1.31,
+      "reordered_drops": 0,
+      "max_abs_error": 6961.403898998384,
+      "earlier_rms_error": 1260.490516614797,
+      "final_rms_error": 3589.544280586321,
+      "observed": "growing"
+    }
+  ]
+}

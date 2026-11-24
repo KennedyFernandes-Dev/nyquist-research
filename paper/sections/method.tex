@@ -1,0 +1,103 @@
+\section{Metodologia e arquitetura}
+O pacote separa modelo de planta, métodos de análise, validação e
+aplicação. O núcleo usa Python 3.12 e NumPy. O sistema define
+coeficientes em ordem decrescente e avalia a razão por Horner, com
+uso de polinômios reversos para $|s|>1$. A instrução de teste verifica
+as importações permitidas no núcleo. SciPy, Python-control, SymPy e
+Mpmath são executados na camada de validação.
+
+\subsection{Contorno numérico e margens}
+A malha contém frequências positivas e negativas, os arcos de desvio
+e o arco externo. Para $A$ mônico, o código usa
+$1-\sum_{i\ge1}|a_i|R^{-i}$ como cota inferior normalizada do
+denominador no exterior, quando positiva. A cota superior da razão
+é calculada sobre a mesma escala. Para um modelo estritamente
+próprio e com atraso, $|e^{-s\tau}|\le1$ no semiplano direito permite
+conter a cauda em um disco que exclui $-1$. Sem atraso, a cota se
+aplica à diferença em relação ao ganho de passagem direta. Com atraso,
+um ganho de passagem direta de módulo maior ou igual a um fica fora
+da certificação desse contorno.
+
+A contagem exige duas malhas sucessivas com o mesmo inteiro,
+incremento angular máximo inferior a $\pi/3$ e distância do polígono
+ao ponto crítico acima de $10^{-7}$. A distância é calculada nos
+segmentos e nos vértices. O refinamento local bissecta segmentos cujo
+mapeamento varia rapidamente ou apresenta curvatura relevante em relação
+à distância ao ponto crítico. Cruzamentos de ganho unitário são pontos
+adicionais da malha. A resposta próxima a $-1$ em um cruzamento
+recebe o estado de fronteira. Um resultado sem resolução suficiente
+recebe diagnóstico indeterminado. Quando a distância de um polo aberto ao eixo é numericamente
+ambígua, a contagem fica indeterminada. Os raios de indentação
+são reduzidos para preservar polos fechados próximos ao eixo.
+Em sistemas racionais, a distância às raízes de $A+KB$ fornece
+essa escala. Em sistemas atrasados, verifica-se a dominância do
+termo de realimentação sobre o denominador em torno do polo.
+A cota externa limita a região de interesse. A resolução no
+interior continua empírica.
+
+Para o ganho unitário, calcula-se o polinômio em $x=\omega^2$
+a partir de $|KB(\imagunit\omega)|^2-|A(\imagunit\omega)|^2$. Cada candidato
+encontrado é verificado na resposta complexa. Para a fase racional,
+o produto $KB(\imagunit\omega)\overline{A(\imagunit\omega)}$ identifica a
+interseção com o eixo real. Com atraso, a busca por semieixo negativo
+ocorre em uma banda finita explícita. As passagens de Bode são
+registradas em rad/s e as margens em razão de ganho e graus.
+
+\subsection{Métodos polinomiais e resposta ao degrau}
+Routh calcula a recorrência em ponto flutuante. Pivôs pequenos e
+linhas nulas acionam uma alternativa racional para reduzir cancelamento.
+A contagem no eixo usa as raízes nulas e os fatores comuns das partes
+par e ímpar do polinômio. O lugar das raízes calcula as raízes
+do polinômio para cada $K$ e conecta as amostras por atribuição
+de custo mínimo sobre distâncias no plano complexo. O cálculo de
+cruzamentos verifica os candidatos do produto de polinômios em
+$\imagunit\omega$. Em caso de queda da ordem, a trajetória pode possuir
+um ramo no infinito. O degrau usa uma realização companheira e uma
+exponencial matricial calculada por série e quadraturas sucessivas.
+Para plantas atrasadas, o degrau, Routh e lugar das raízes usam a
+mesma aproximação de Padé escolhida pelo usuário.
+
+\subsection{Plantas e hipóteses}
+A Tabela~\ref{tab:systems} resume as plantas. Em A, os polos são
+$-1,-2,-3$ e a fronteira de ganho é $K=10$ em $\sqrt{11}$ rad/s.
+Em B, os polos são $1$ e $-2$. O modelo representa uma dinâmica
+linearizada com rigidez efetiva negativa, como um pêndulo
+invertido amortecido em torno do equilíbrio vertical. A escrita
+normalizada é $\ddot x+\dot x-2x=u$. A fronteira em $K=2$ é
+um cruzamento por frequência zero. Em C, os polos são $-1,-2$
+e o zero é $+1$. O degrau inicia com inclinação negativa.
+O polinômio $s^2+(3-K)s+(2+K)$ prevê cruzamento em $K=3$ e
+$\sqrt5$ rad/s. Em D, o polo racional é $-1$ e a
+primeira fronteira de atraso no ganho nominal é
+$\tau_*=2\pi/(3\sqrt3)$ s, obtida de \eqref{eq:delay}.
+As plantas A, B e D não têm zeros finitos.
+
+\begin{table}[!t]
+\centering
+\caption{Plantas de teste e parâmetros nominais.}
+\label{tab:systems}
+\begin{tabular}{clcc}
+\toprule
+Caso & $B(s)/A(s)$ & $K$ & $\tau$ (s)\\
+\midrule
+A & $6/(s^3+6s^2+11s+6)$ & 1 & 0\\
+B & $1/(s^2+s-2)$ & 4 & 0\\
+C & $(1-s)/(s^2+3s+2)$ & 1 & 0\\
+D & $2/(s+1)$ & 1 & 0,8\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Validação e medições}
+Os comparadores usam resultados analíticos onde há uma fronteira
+conhecida e métodos de bibliotecas fora do núcleo. Assim é possível
+registrar diferenças entre a representação em coeficientes e a avaliação
+da função, a contagem de raízes e as convenções sobre cruzamento em DC.
+Para os benchmarks, CPU e tempo de parede são medidos após aquecimento.
+A carga de módulos, a geração de gráficos e a escrita em disco ficam
+fora da seção cronometrada. Dados brutos guardam cada repetição e a
+descrição do ambiente. A memória é medida à parte, sobre alocações
+Python. A sensibilidade em raízes simples é interpretada pela relação
+de primeira ordem $|\delta r|\simeq |\delta C(r)|/|C'(r)|$,
+com distinção entre erro frente à construção analítica e resíduo
+escalado do polinômio armazenado \cite{wilkinson1959}.

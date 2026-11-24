@@ -1,0 +1,200 @@
+\section{Resultados e validação}
+\subsection{Estabilidade absoluta e relativa}
+Foram aprovadas \ChecksPass{} de \ChecksTotal{} verificações
+computacionais nos experimentos. A Tabela~\ref{tab:margins}
+apresenta os pontos nominais. Routh também classificou os quatro
+casos nominais como estáveis, usando Padé $[3/3]$ para D.
+A comparação incluiu configurações abaixo, sobre e acima das
+fronteiras. Em A, o ganho $K=10$ levou um par ao eixo. Em B,
+$K=2$ produziu um polo na origem. Em C, o par imaginário
+surgiu em $K=3$. O cálculo independente do lugar das raízes
+concordou com esses três pontos de ganho. As
+Figs.~\ref{fig:nyquist}--\ref{fig:locus} mostram os diagramas
+nos quatro sistemas. A Fig.~\ref{fig:margins} compara as margens
+nominais na convenção da tabela.
+
+\begin{table}[!t]
+\centering
+\caption{Estabilidade e margem nos pontos nominais.}
+\label{tab:margins}
+\begin{tabular}{cccc}
+\toprule
+Caso & $(P,N,Z)$ & MG (razão) & MF ($^\circ$)\\
+\midrule
+\NominalRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+No caso A, a margem de fase da tabela decorre de um cruzamento
+em DC. O comparador Python-control reporta a margem de ganho
+de 10, mas sua rotina de margens usuais omite esse cruzamento
+unitário em DC. A diferença foi registrada nas convenções
+experimentais. Em B, a margem de ganho de $0{,}5$ identifica a
+fronteira ao reduzir o ganho nominal de 4 para 2. A contagem
+$P=1$ e $N=-1$ demonstra a estabilidade em malha fechada.
+Em C, inexiste um cruzamento de ganho unitário na frequência
+real e a MG é 3. A resposta inicial inversa produz um mínimo
+amostrado de $-0{,}19487$, embora a amostra final se aproxime
+de $1/3$ no intervalo avaliado. A Fig.~\ref{fig:step} mostra a
+resposta ao degrau dos quatro casos.
+
+O erro relativo máximo da resposta complexa nominal frente à
+referência foi de $6{,}22\times10^{-16}$. O maior erro absoluto
+nos conjuntos de raízes por ganho foi de $3{,}56\times10^{-14}$
+e a maior diferença no degrau foi de $7{,}25\times10^{-14}$
+nas quatro plantas, dentro das tolerâncias do protocolo.
+Para D, a referência temporal representa o mesmo modelo racional com Padé $[3/3]$. O acordo nesse degrau mede o algoritmo de resposta
+temporal e não mede erro físico do Padé.
+
+\begin{figure*}[!t]
+\centering
+\figfile{0.95\textwidth}{nyquist-abcd.pdf}
+\caption{Contornos de Nyquist das plantas A--D nos pontos nominais.
+A cruz assinala $-1$. O caso B exige um envoltório anti-horário.}
+\label{fig:nyquist}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\figfile{0.97\textwidth}{bode-abcd.pdf}
+\caption{Magnitude e fase de A--D. O caso D usa o atraso exponencial.
+A faixa exibida de frequências é finita.}
+\label{fig:bode}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\figfile{0.95\textwidth}{root-locus-abcd.pdf}
+\caption{Lugar das raízes em A--D. Em D, os ramos são os
+do modelo racional de Padé $[3/3]$.}
+\label{fig:locus}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\figfile{0.96\textwidth}{stability-margins.pdf}
+\caption{Margens dos quatro sistemas nominais. Para D,
+selecionou-se o primeiro cruzamento de fase positivo em frequência.}
+\label{fig:margins}
+\end{figure*}
+
+\begin{figure}[!t]
+\centering
+\figfile{\columnwidth}{step-response.pdf}
+\caption{Degrau unitário de malha fechada. A curva C apresenta
+deslocamento inicial negativo. Para D usa-se Padé $[3/3]$.}
+\label{fig:step}
+\end{figure}
+
+\subsection{Atraso exato e Padé}
+Em D, o menor cruzamento de módulo unitário positivo fica em
+$\sqrt3$ rad/s. O cálculo encontrou a fronteira em
+\DelayCritical{} s, em concordância com \eqref{eq:delay}.
+No ponto nominal, a MF é $40{,}61^\circ$. O primeiro cruzamento
+de fase positivo ocorre em $2{,}44822$ rad/s e fornece a MG
+linear de $1{,}32229$. Em frequências mais altas existem
+cruzamentos adicionais, com margens correspondentes ao módulo
+cada vez menor da planta.
+
+Em $\tau=5$ s, a primeira versão com refinamento global
+encontrou quatro envoltórios, mas a variação de argumento
+entre amostras excedeu seu critério e o resultado ficou
+indeterminado. A bissecção localizada resolveu a transição
+com a configuração padrão. Contaram-se $P=0$, $N=4$ e
+$Z=4$, confirmados por dois pares à direita na solução por
+Lambert $W$. A execução arquivou o diagnóstico original e
+os valores antes e depois do refinamento.
+
+A Tabela~\ref{tab:pade} compara a primeira fronteira dos modelos
+racionais com o atraso exato. Em $1{,}01\tau_*$, as ordens
+1 e 2 ainda indicam estabilidade, embora o contorno exato
+conclua instabilidade. As ordens 3 e 5 recuperam a classificação
+nesse ponto. O erro complexo e a discrepância de classificação
+podem ser observados na Fig.~\ref{fig:pade}. A ordem adequada
+depende da banda e da distância da fronteira.
+
+\begin{table}[!t]
+\centering
+\caption{Atraso crítico estimado por Padé para D.}
+\label{tab:pade}
+\begin{tabular}{cccc}
+\toprule
+Ordem & $\hat\tau_*$ (s) & Erro relativo & Em $1{,}01\tau_*$\\
+\midrule
+\DelayRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[!tp]
+\centering
+\figfile{0.88\textwidth}{delay-pade.pdf}
+\caption{Diferenças de frequência e de atraso crítico no caso D.
+A referência usa a exponencial.}
+\label{fig:pade}
+\end{figure*}
+
+\subsection{Desempenho e erro numérico}
+As medições foram executadas em macOS 26.6.2, em um Apple M5 com
+10 núcleos lógicos e 16 GiB. Usaram-se dois aquecimentos e
+11 repetições por ordem e método, num total de 132 medições.
+A varredura do lugar das raízes contém 48 ganhos e a de Bode,
+1001 frequências. A semente da perturbação dos coeficientes
+é 24112026. As amostras, os valores de CPU e parede, a média,
+a mediana e o desvio-padrão estão preservados para auditoria.
+
+\begin{table}[!t]
+\centering
+\caption{Mediana do tempo de CPU em milissegundos.}
+\label{tab:cpu}
+\begin{tabular}{lrrr}
+\toprule
+Método & $n=5$ & $n=10$ & $n=20$\\
+\midrule
+\CpuRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+A Tabela~\ref{tab:cpu} e a Fig.~\ref{fig:bench} registram o crescimento
+observado no protocolo. A carga de Routh é uma tabela por
+polinômio. Lugar das raízes calcula conjuntos de raízes e
+associa trajetórias para 48 ganhos. Nyquist avalia múltiplos
+contornos e conta envoltórios. Bode calcula margens e amostra
+duas curvas. Essas diferenças de tarefa condicionam a interpretação
+das medições. Os valores de memória usam \texttt{tracemalloc}
+em execução separada, refletindo o pico de alocações rastreadas
+pelo Python.
+
+\begin{figure*}[!tp]
+\centering
+\figfile{0.88\textwidth}{scalability.pdf}
+\caption{Escalabilidade no protocolo de 11 repetições por combinação.
+A dispersão foi medida com gráficos construídos dos dados brutos.}
+\label{fig:bench}
+\end{figure*}
+
+O experimento de precisão comparou duas famílias de raízes
+construídas, uma dispersa e uma agrupada. Em ordem 20, os erros
+absolutos máximos em relação às raízes de projeto foram
+$0{,}13280$ e $0{,}31928$ s$^{-1}$. Os máximos de
+condicionamento relativo foram $7{,}59\times10^{14}$ e
+$2{,}27\times10^{24}$. As duas famílias exibiram resíduos
+escalados inferiores a $3\times10^{-16}$. Esses valores mostram
+que uma raiz pode satisfazer numericamente o polinômio com
+resíduo pequeno e ainda estar distante da raiz de projeto.
+A referência em precisão estendida separa o arredondamento
+dos coeficientes do erro do solucionador no polinômio
+armazenado. A experiência repetiu o cálculo após perturbação
+relativa de $10^{-10}$ nos coeficientes.
+Na Fig.~\ref{fig:precision}, a dispersão dos resultados depende
+da distribuição das raízes e da ordem considerada.
+
+\begin{figure*}[!tp]
+\centering
+\figfile{0.88\textwidth}{numerical-precision.pdf}
+\caption{Erro de localização e condicionamento para as famílias
+dispersa e agrupada em três ordens.}
+\label{fig:precision}
+\end{figure*}

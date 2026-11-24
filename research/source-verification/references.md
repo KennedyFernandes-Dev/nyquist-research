@@ -16,3 +16,6 @@ Consulta em 24 de novembro de 2026. As entradas do artigo correspondem às chave
 | zhang2001 | [Artigo original arquivado na Purdue](https://engineering.purdue.edu/~zak/networked_systems.pdf) e [registro Crossref](https://api.crossref.org/works/10.1109%2F37.898794) | Atraso de comunicação em sistemas de controle em rede |
 
 [IEEE Author Center](https://conferences.ieeeauthorcenter.ieee.org/write-your-paper/authoring-tools-and-templates/) e [modelo IEEE Conference](https://www.overleaf.com/latex/templates/ieee-conference-template/grfzhhncsfqn) fixam a classe `IEEEtran`, modo `conference`. [Python-control](https://python-control.readthedocs.io/en/latest/generated/control.nyquist_response.html) documenta a convenção do contorno de validação. [SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.step.html) documenta a resposta temporal usada como referência.
+
+
+A declaração de uso de IA segue as orientações de transparência do [IEEE Author Center](https://magazines.ieeeauthorcenter.ieee.org/get-started-with-ieee-magazines/publishing-ethics/guidelines-policies/submission-and-peer-review-policies/). A [comunicação institucional da PUC Goiás](https://impressoes.pucgoias.edu.br/queda-de-braco/) também descreve a declaração quando a ferramenta tem influência relevante e a revisão humana antes da submissão.
