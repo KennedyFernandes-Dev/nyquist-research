@@ -258,8 +258,11 @@ def nyquist(
 
     markers = np.asarray(gain_frequencies(system), dtype=np.float64)
     markers = markers[np.isfinite(markers) & (markers >= 0) & (markers < radius)]
-    boundary_values = system.evaluate(1j * np.r_[0, markers])
-    contact = np.any(np.abs(boundary_values + 1) <= critical_tol * 0.01)
+    boundary_frequencies = np.r_[0, markers]
+    boundary_values = system.evaluate(1j * boundary_frequencies)
+    contacts = boundary_frequencies[np.abs(boundary_values + 1) <= critical_tol * 0.01]
+    contact = bool(contacts.size)
+    delayed_contact = contact and system.delay > 0
     axis = _axis_centers(poles, axis_tol)
 
     hidden_axis = bool(axis.size) and bool(
@@ -282,6 +285,21 @@ def nyquist(
             None,
             "Não foi possível excluir somente os polos de fronteira nas indentações.",
         )
+    if delayed_contact:
+        # A right-hand detour also excludes the detected closed-loop boundary zeros.
+        closed_axis = np.unique(np.r_[-contacts, contacts])
+        merged = np.unique(np.r_[axis, closed_axis])
+        combined = _indent_radii(merged, poles, radius, axis_tol)
+        for i, center in enumerate(merged):
+            neighbors = np.abs(merged - center)
+            other = neighbors[neighbors > 0]
+            if other.size:
+                combined[i] = min(combined[i], float(other.min()) / 4)
+            if center in axis:
+                combined[i] = min(combined[i], radii[int(np.searchsorted(axis, center))])
+            else:
+                combined[i] = min(combined[i], 0.001 * max(1, abs(center)))
+        axis, radii = merged, combined
     contour = mapped = empty
     current: Winding | None = None
     previous: Winding | None = None
@@ -290,7 +308,7 @@ def nyquist(
         contour = _contour(
             system, radius, points * 2**level, axis, radii / 2**level, np.r_[-markers, markers]
         )
-        if contact:
+        if contact and not delayed_contact:
             mapped = system.evaluate(contour)
             status = "marginal"
             reason = "A resposta cruza −1 no eixo imaginário. Z pelo contorno fica indefinido."
@@ -330,6 +348,9 @@ def nyquist(
             z = current.turns + p
             status = "unstable" if z else "stable"
             reason = "Contagem consistente após refinamento do contorno."
+            if delayed_contact:
+                status = "unstable" if z else "marginal"
+                reason += " O contorno exclui os zeros fechados detectados no eixo."
             if hidden_axis:
                 status = "unstable" if z else "marginal"
                 reason += " O modelo inclui um modo cancelado no eixo imaginário."

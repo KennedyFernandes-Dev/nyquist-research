@@ -59,7 +59,7 @@ def test_winding_orientation_and_multiplicity():
         (TransferFunction([2], [1, 1], delay=1.5), (0, 2, 2, "unstable")),
         (TransferFunction([1], [1, 0]), (0, 0, 0, "stable")),
         (TransferFunction([8], [1, 3, 3, 1]), (0, None, None, "marginal")),
-        (TransferFunction([2], [1, 1], delay=2 * pi / (3 * sqrt(3))), (0, None, None, "marginal")),
+        (TransferFunction([2], [1, 1], delay=2 * pi / (3 * sqrt(3))), (0, 0, 0, "marginal")),
     ],
 )
 def test_contour_and_closed_loop_counts(system, expected):
@@ -128,3 +128,11 @@ def test_closed_boundary_with_strictly_unstable_pole():
     assert result.status == "unstable"
     assert result.z is None
     assert "também" in result.reason
+
+
+@pytest.mark.parametrize("pair_count", [1, 2])
+def test_delayed_contact_and_strictly_unstable_modes_are_distinguished(pair_count):
+    delay = (2 * pi / 3 + 2 * pi * pair_count) / sqrt(3)
+    result = nyquist(TransferFunction([2], [1, 1], delay=delay))
+    assert result.status == "unstable"
+    assert result.z == 2 * pair_count
