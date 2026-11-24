@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simulador de estabilidade de sistemas contínuos com Nyquist, Routh-Hurwitz, Bode e lugar das raízes.">
+  <title>Laboratório de estabilidade</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.12.3/build/stlite.css">
+  <style>
+    html, body, #app { margin: 0; min-height: 100%; }
+    #app { height: 100dvh; }
+    .startup {
+      box-sizing: border-box;
+      width: min(100% - 2rem, 36rem);
+      margin: 12vh auto 0;
+      padding: 2rem;
+      border: 1px solid #d3e2e5;
+      border-top: 4px solid #175f75;
+      border-radius: 1rem;
+      background: #f4f8f9;
+      color: #162d3b;
+      font: 1rem/1.55 system-ui, sans-serif;
+    }
+    .startup h1 { margin: 0; font-size: clamp(1.45rem, 5vw, 2rem); line-height: 1.2; }
+    .startup p { margin: 1rem 0; }
+    .startup a { color: #14596c; }
+  </style>
+  <script type="module" src="./main.js"></script>
+</head>
+<body>
+  <div id="app">
+    <main class="startup">
+      <h1>Laboratório de estabilidade</h1>
+      <p id="status" role="status">Preparando o simulador no navegador. A primeira abertura baixa o ambiente Python.</p>
+      <noscript><p>Ative o JavaScript para executar o simulador.</p></noscript>
+      <a href="https://github.com/KennedyFernandes-Dev/nyquist-research">Ver código e dados no GitHub</a>
+    </main>
+  </div>
+</body>
+</html>

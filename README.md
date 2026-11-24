@@ -2,7 +2,11 @@
 
 Ferramenta de pesquisa em Python para laços LIT contínuos SISO com realimentação unitária negativa. O projeto compara Nyquist, Routh–Hurwitz, lugar das raízes e Bode em quatro plantas, incluindo um modelo de atraso puro de transporte.
 
-## Executar
+## Simulador on-line
+
+[Abra o simulador no GitHub Pages](https://kennedyfernandes-dev.github.io/nyquist-research/). O Stlite executa a interface Streamlit e os mesmos algoritmos Python no navegador, via WebAssembly. Na primeira visita, o navegador baixa o ambiente e as dependências. Os parâmetros, cálculos e resultados da sessão são processados no navegador.
+
+## Executar localmente
 
 Para reproduzir o ambiente medido, use Git, uv e CPython 3.12.14. O uv obtém o Python declarado em `.python-version` quando necessário. Cada comando deve ser executado a partir da raiz deste repositório.
 
