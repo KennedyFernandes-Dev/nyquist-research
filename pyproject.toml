@@ -20,6 +20,7 @@ security = ["bandit>=1.8,<2", "pip-audit>=2.9,<3"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = "-ra"
 
 [tool.ruff]

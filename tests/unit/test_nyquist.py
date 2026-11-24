@@ -109,3 +109,22 @@ def test_local_refinement_resolves_thin_and_multiple_turns(delay, expected):
     result = nyquist(TransferFunction([2], [1, 1], delay=delay))
     assert result.z == expected
     assert result.refinements == 2
+
+
+def test_almost_axis_open_pole_does_not_produce_false_stability():
+    result = nyquist(TransferFunction([1e-12], [1, -5e-11]))
+    assert result.status == "indeterminate"
+
+
+@pytest.mark.parametrize("gain", [-1e-12, -1e-4])
+def test_open_integrator_indent_does_not_exclude_closed_unstable_pole(gain):
+    result = nyquist(TransferFunction([1], [1, 0], gain))
+    assert result.status == "unstable"
+    assert result.z == 1
+
+
+def test_closed_boundary_with_strictly_unstable_pole():
+    result = nyquist(TransferFunction([4], [1, -1, 1, -5]))
+    assert result.status == "unstable"
+    assert result.z is None
+    assert "também" in result.reason

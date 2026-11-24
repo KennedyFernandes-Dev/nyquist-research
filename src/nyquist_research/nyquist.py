@@ -77,6 +77,57 @@ def _indent_radii(
     return np.asarray(radii)
 
 
+def _shifted_magnitudes(coefficients: tuple[float, ...], center: complex) -> NDArray[np.float64]:
+    """Magnitudes in ascending powers of (s - center)."""
+    shifted = np.asarray([coefficients[0]], dtype=np.complex128)
+    for coefficient in coefficients[1:]:
+        shifted = np.r_[center * shifted, 0] + np.r_[coefficient, shifted]
+    return np.abs(shifted)
+
+
+def _safe_indents(
+    system: TransferFunction,
+    axis: NDArray[np.float64],
+    radii: NDArray[np.float64],
+    hidden_axis: bool,
+) -> NDArray[np.float64] | None:
+    """Prevent indents around open poles from excluding closed RHP poles."""
+    if not axis.size:
+        return radii
+    if system.delay == 0:
+        closed = np.roots(system.characteristic())
+        for index, center in enumerate(axis):
+            distances = np.abs(closed - 1j * center)
+            nonzero = distances[distances > 0]
+            if nonzero.size:
+                radii[index] = min(radii[index], float(nonzero.min()) / 4)
+            if radii[index] < 32 * np.finfo(float).eps * abs(center):
+                return None
+        return radii
+
+    if hidden_axis:
+        return None
+    for index, center in enumerate(axis):
+        upper = _shifted_magnitudes(system.denominator, 1j * center)
+        lower = _shifted_magnitudes(system.numerator, 1j * center)
+        candidate = radii[index]
+        for _ in range(48):
+            upper_a = np.polynomial.polynomial.polyval(candidate, upper)
+            delta_b = (
+                candidate * np.polynomial.polynomial.polyval(candidate, lower[1:])
+                if len(lower) > 1
+                else 0
+            )
+            lower_b = abs(system.gain) * (lower[0] - delta_b) * np.exp(-system.delay * candidate)
+            if upper_a < 0.8 * lower_b:
+                radii[index] = candidate
+                break
+            candidate /= 2
+        else:
+            return None
+    return radii
+
+
 def _contour(
     system: TransferFunction,
     radius: float,
@@ -160,7 +211,8 @@ def nyquist(
     if points < 16 or refinements < 2 or axis_tol <= 0 or critical_tol <= 0:
         raise ValueError("Resolução ou tolerância de Nyquist inválida.")
     poles = system.poles
-    p = int(np.count_nonzero(poles.real > axis_tol * np.maximum(1, np.abs(poles))))
+    pole_scale = np.maximum(1, np.abs(poles))
+    p = int(np.count_nonzero(poles.real > axis_tol * pole_scale))
     empty = np.empty(0, dtype=np.complex128)
     radius = _outer_radius(system, poles)
     if radius is None:
@@ -188,20 +240,48 @@ def nyquist(
             "O produto atraso–raio excede o limite da malha de certificação numérica.",
         )
 
+    pole_offset = np.abs(poles.real)
+    near = (pole_offset > 0) & (pole_offset <= axis_tol * pole_scale)
+    distinguishable = (pole_offset > 32 * np.finfo(float).eps * pole_scale) | (poles.imag == 0)
+    if np.any(near & distinguishable):
+        return NyquistResult(
+            p,
+            None,
+            None,
+            "indeterminate",
+            empty,
+            empty,
+            radius,
+            None,
+            "Há polo aberto quase sobre o eixo, insuficientemente separado para contar P.",
+        )
+
     markers = np.asarray(gain_frequencies(system), dtype=np.float64)
     markers = markers[np.isfinite(markers) & (markers >= 0) & (markers < radius)]
     boundary_values = system.evaluate(1j * np.r_[0, markers])
     contact = np.any(np.abs(boundary_values + 1) <= critical_tol * 0.01)
     axis = _axis_centers(poles, axis_tol)
 
-    hidden_axis = bool(axis.size) and (
+    hidden_axis = bool(axis.size) and bool(
         system.gain == 0
         or system.numerator == (0.0,)
         or np.any(
             np.abs(system.zeros[:, None] - 1j * axis) <= axis_tol * np.maximum(1.0, np.abs(axis))
         )
     )
-    radii = _indent_radii(axis, poles, radius, axis_tol)
+    radii = _safe_indents(system, axis, _indent_radii(axis, poles, radius, axis_tol), hidden_axis)
+    if radii is None:
+        return NyquistResult(
+            p,
+            None,
+            None,
+            "indeterminate",
+            empty,
+            empty,
+            radius,
+            None,
+            "Não foi possível excluir somente os polos de fronteira nas indentações.",
+        )
     contour = mapped = empty
     current: Winding | None = None
     previous: Winding | None = None
@@ -212,16 +292,23 @@ def nyquist(
         )
         if contact:
             mapped = system.evaluate(contour)
+            status = "marginal"
+            reason = "A resposta cruza −1 no eixo imaginário. Z pelo contorno fica indefinido."
+            if not system.delay:
+                closed = np.roots(system.characteristic())
+                if np.any(closed.real > axis_tol * np.maximum(1, np.abs(closed))):
+                    status = "unstable"
+                    reason += " O polinômio também apresenta polos no semiplano direito."
             return NyquistResult(
                 p,
                 None,
                 None,
-                "marginal",
+                status,
                 contour,
                 mapped,
                 radius,
                 float(np.min(np.abs(boundary_values[np.isfinite(boundary_values)] + 1))),
-                "A resposta cruza −1 no eixo imaginário dentro da tolerância de fronteira.",
+                reason,
                 refinements=level + 1,
             )
         contour, mapped, resolved = _refine_mapping(system, contour)
