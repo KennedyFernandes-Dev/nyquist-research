@@ -1,0 +1,788 @@
+{
+  "total": 129,
+  "passed": 129,
+  "failures": [],
+  "checks": [
+    {
+      "check": "A/nominal: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/nominal: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/nominal: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/nominal: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/nominal: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/nominal: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/fronteira: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/fronteira: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/fronteira: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/fronteira: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/fronteira: fronteira Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/instável: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/instável: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/instável: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/instável: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/instável: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A/instável: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/nominal: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/nominal: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/nominal: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/nominal: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/nominal: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/nominal: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/instável: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/instável: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/instável: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/instável: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/instável: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/instável: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/fronteira: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/fronteira: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/fronteira: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/fronteira: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "B/fronteira: fronteira Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/nominal: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/nominal: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/nominal: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/nominal: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/nominal: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/nominal: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/fronteira: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/fronteira: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/fronteira: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/fronteira: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/fronteira: fronteira Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/instável: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/instável: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/instável: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/instável: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/instável: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C/instável: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/nominal: Lambert W",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/nominal: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/nominal: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/nominal: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/sem atraso: N Python-control",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/sem atraso: Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/sem atraso: Z Routh",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/sem atraso: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/sem atraso: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/sem atraso: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/fronteira: Lambert W",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/fronteira: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/fronteira: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/fronteira: fronteira Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/instável: Lambert W",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/instável: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/instável: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/instável: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/dois pares: Lambert W",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/dois pares: estado de referência",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/dois pares: Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/dois pares: Z Nyquist",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "D/dois pares: malha padrão converge após refinamento local",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "A: resposta complexa SciPy absoluta",
+      "value": 2.3714374201337736e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "A: resposta complexa SciPy relativa",
+      "value": 6.219797309894869e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "A: polos Python-control",
+      "value": 5.329070518200751e-15,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "A: zeros Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "A: Lugar das Raízes Python-control",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "A: degrau SciPy",
+      "value": 2.1094237467877974e-15,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "A: fronteira analítica do Lugar das Raízes",
+      "value": 0.0,
+      "limit": 2e-07,
+      "pass": true
+    },
+    {
+      "check": "A: MF frequência",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "A: MF margem",
+      "value": 0.0,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "A: MG frequência",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "A: MG margem",
+      "value": 1.7763568394002505e-15,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "A: ganho unitário em DC, solução direta",
+      "value": 0.0,
+      "limit": 1e-12,
+      "pass": true
+    },
+    {
+      "check": "B: resposta complexa SciPy absoluta",
+      "value": 3.510833468576701e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "B: resposta complexa SciPy relativa",
+      "value": 5.030436653469307e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "B: polos Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "B: zeros Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "B: Lugar das Raízes Python-control",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "B: degrau SciPy",
+      "value": 5.329070518200751e-15,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "B: fronteira analítica do Lugar das Raízes",
+      "value": 0.0,
+      "limit": 2e-07,
+      "pass": true
+    },
+    {
+      "check": "B: MF frequência",
+      "value": 4.440892098500626e-16,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "B: MF margem",
+      "value": 1.4210854715202004e-14,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "B: MG frequência",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "B: MG margem",
+      "value": 0.0,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "B: MG em DC, solução direta",
+      "value": 0.0,
+      "limit": 1e-12,
+      "pass": true
+    },
+    {
+      "check": "C: resposta complexa SciPy absoluta",
+      "value": 1.7554167342883506e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "C: resposta complexa SciPy relativa",
+      "value": 4.617568362155166e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "C: polos Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "C: zeros Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "C: Lugar das Raízes Python-control",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "C: degrau SciPy",
+      "value": 6.106226635438361e-16,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "C: fronteira analítica do Lugar das Raízes",
+      "value": 0.0,
+      "limit": 2e-07,
+      "pass": true
+    },
+    {
+      "check": "C: resposta inicialmente inversa",
+      "value": 0.0,
+      "limit": 0.0,
+      "pass": true
+    },
+    {
+      "check": "C: MF frequência",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "C: MF margem",
+      "value": 0.0,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "C: MG frequência",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "C: MG margem",
+      "value": 0.0,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "D: resposta complexa SciPy absoluta",
+      "value": 4.0029660424867215e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "D: resposta complexa SciPy relativa",
+      "value": 3.834753719686369e-16,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "D: polos Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "D: zeros Python-control",
+      "value": 0.0,
+      "limit": 1e-09,
+      "pass": true
+    },
+    {
+      "check": "D: Lugar das Raízes Python-control",
+      "value": 3.556112111387742e-14,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "D: degrau SciPy",
+      "value": 7.249756350802272e-14,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "D: MF frequência",
+      "value": 0.0,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "D: MF margem",
+      "value": 0.0,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "D: MG frequência",
+      "value": 9.903189379656396e-14,
+      "limit": 2e-06,
+      "pass": true
+    },
+    {
+      "check": "D: MG margem",
+      "value": 4.596323321948148e-14,
+      "limit": 2e-05,
+      "pass": true
+    },
+    {
+      "check": "D: atraso crítico, referência analítica",
+      "value": 0.0,
+      "limit": 1e-08,
+      "pass": true
+    },
+    {
+      "check": "D: coeficientes Padé [1/1] Mpmath",
+      "value": 0.0,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "D: atraso crítico Padé [1/1] Python-control",
+      "value": 4.8405723873656825e-14,
+      "limit": 1e-08,
+      "pass": true
+    },
+    {
+      "check": "D: coeficientes Padé [2/2] Mpmath",
+      "value": 0.0,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "D: atraso crítico Padé [2/2] Python-control",
+      "value": 8.881784197001252e-16,
+      "limit": 1e-08,
+      "pass": true
+    },
+    {
+      "check": "D: coeficientes Padé [3/3] Mpmath",
+      "value": 1.0408340855860843e-17,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "D: atraso crítico Padé [3/3] Python-control",
+      "value": 6.261657858885883e-14,
+      "limit": 1e-08,
+      "pass": true
+    },
+    {
+      "check": "D: coeficientes Padé [5/5] Mpmath",
+      "value": 1.3877787807814457e-17,
+      "limit": 1e-10,
+      "pass": true
+    },
+    {
+      "check": "D: atraso crítico Padé [5/5] Python-control",
+      "value": 8.08242361927114e-14,
+      "limit": 1e-08,
+      "pass": true
+    }
+  ],
+  "conventions": [
+    "Routh e Lugar das Raízes usam Padé [3/3] na planta D nominal.",
+    "Margens usuais do Python-control omitem o cruzamento unitário em DC.",
+    "Para D, confronta-se a primeira margem de ganho positiva em frequência.",
+    "A classificação na fronteira admite Z indisponível quando N não está definido.",
+    "O caso D a 5 s confronta as malhas padrão e de 1024 pontos de base."
+  ]
+}

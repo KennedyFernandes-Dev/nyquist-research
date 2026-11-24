@@ -1,0 +1,11 @@
+{
+  "orders": [5, 10, 20],
+  "repetitions": 11,
+  "warmups": 2,
+  "seed": 24112026,
+  "coefficient_relative_perturbation": 1e-10,
+  "loop_gain_at_dc": 0.4,
+  "bode_frequency_count": 1001,
+  "root_locus_gain_count": 48,
+  "memory_metric": "tracemalloc, separate execution, peak Python allocation"
+}

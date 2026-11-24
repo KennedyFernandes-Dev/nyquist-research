@@ -1,0 +1,338 @@
+[
+  {
+    "system": "A",
+    "gain": 1.0,
+    "delay_s": 0.0,
+    "numerator": [
+      6.0
+    ],
+    "denominator": [
+      1.0,
+      6.0,
+      11.0,
+      6.0
+    ],
+    "open_poles": [
+      [
+        -2.9999999999999996,
+        0.0
+      ],
+      [
+        -1.999999999999995,
+        0.0
+      ],
+      [
+        -1.0000000000000013,
+        0.0
+      ]
+    ],
+    "open_zeros": [],
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "routh_status": "stable",
+    "routh_delay_model": null,
+    "root_locus_crossings": [
+      [
+        10.0,
+        0.0,
+        -3.3166247903554
+      ],
+      [
+        10.0,
+        0.0,
+        3.3166247903554
+      ]
+    ],
+    "gain_crossings_rad_s_pm_deg": [
+      [
+        0.0,
+        180.0
+      ]
+    ],
+    "phase_crossings_rad_s_gm": [
+      [
+        3.3166247903554,
+        9.999999999999998
+      ]
+    ],
+    "reference_gain_crossings_rad_s_pm_deg": [],
+    "reference_phase_crossings_rad_s_gm": [
+      [
+        3.3166247903554,
+        10.0
+      ]
+    ],
+    "gain_crossover_at_dc": true,
+    "max_frequency_absolute_error": 2.3714374201337736e-16,
+    "max_frequency_relative_error": 6.219797309894869e-16,
+    "max_locus_error": 0.0,
+    "max_step_error": 2.1094237467877974e-15,
+    "step_minimum": 0.0,
+    "step_final_sample": 0.49999994123428415
+  },
+  {
+    "system": "B",
+    "gain": 4.0,
+    "delay_s": 0.0,
+    "numerator": [
+      1.0
+    ],
+    "denominator": [
+      1.0,
+      1.0,
+      -2.0
+    ],
+    "open_poles": [
+      [
+        -2.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "open_zeros": [],
+    "p": 1,
+    "n": -1,
+    "z": 0,
+    "nyquist_status": "stable",
+    "routh_status": "stable",
+    "routh_delay_model": null,
+    "root_locus_crossings": [
+      [
+        2.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "gain_crossings_rad_s_pm_deg": [
+      [
+        1.3311656067742905,
+        19.43829006040285
+      ]
+    ],
+    "phase_crossings_rad_s_gm": [
+      [
+        0.0,
+        0.5
+      ]
+    ],
+    "reference_gain_crossings_rad_s_pm_deg": [
+      [
+        1.331165606774291,
+        19.438290060402863
+      ]
+    ],
+    "reference_phase_crossings_rad_s_gm": [
+      [
+        0.0,
+        0.5
+      ]
+    ],
+    "gain_crossover_at_dc": false,
+    "max_frequency_absolute_error": 3.510833468576701e-16,
+    "max_frequency_relative_error": 5.030436653469307e-16,
+    "max_locus_error": 0.0,
+    "max_step_error": 5.329070518200751e-15,
+    "step_minimum": 0.0,
+    "step_final_sample": 1.9990460150825615
+  },
+  {
+    "system": "C",
+    "gain": 1.0,
+    "delay_s": 0.0,
+    "numerator": [
+      -1.0,
+      1.0
+    ],
+    "denominator": [
+      1.0,
+      3.0,
+      2.0
+    ],
+    "open_poles": [
+      [
+        -2.0,
+        0.0
+      ],
+      [
+        -1.0,
+        0.0
+      ]
+    ],
+    "open_zeros": [
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "routh_status": "stable",
+    "routh_delay_model": null,
+    "root_locus_crossings": [
+      [
+        3.0,
+        0.0,
+        -2.23606797749979
+      ],
+      [
+        3.0,
+        0.0,
+        2.23606797749979
+      ]
+    ],
+    "gain_crossings_rad_s_pm_deg": [],
+    "phase_crossings_rad_s_gm": [
+      [
+        2.23606797749979,
+        3.0
+      ]
+    ],
+    "reference_gain_crossings_rad_s_pm_deg": [],
+    "reference_phase_crossings_rad_s_gm": [
+      [
+        2.23606797749979,
+        3.0
+      ]
+    ],
+    "gain_crossover_at_dc": false,
+    "max_frequency_absolute_error": 1.7554167342883506e-16,
+    "max_frequency_relative_error": 4.617568362155166e-16,
+    "max_locus_error": 0.0,
+    "max_step_error": 6.106226635438361e-16,
+    "step_minimum": -0.19487348269944876,
+    "step_final_sample": 0.3333332035612719
+  },
+  {
+    "system": "D",
+    "gain": 1.0,
+    "delay_s": 0.8,
+    "numerator": [
+      2.0
+    ],
+    "denominator": [
+      1.0,
+      1.0
+    ],
+    "open_poles": [
+      [
+        -1.0,
+        0.0
+      ]
+    ],
+    "open_zeros": [],
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "routh_status": "stable",
+    "routh_delay_model": "Padé [3/3]",
+    "root_locus_crossings": [
+      [
+        1.3227504202587532,
+        0.0,
+        -2.4492192015372645
+      ],
+      [
+        1.3227504202587532,
+        0.0,
+        2.4492192015372645
+      ],
+      [
+        9.946669143180761,
+        0.0,
+        -19.868188346591072
+      ],
+      [
+        9.946669143180761,
+        0.0,
+        19.868188346591072
+      ]
+    ],
+    "gain_crossings_rad_s_pm_deg": [
+      [
+        1.7320508075688772,
+        40.60863905926195
+      ]
+    ],
+    "phase_crossings_rad_s_gm": [
+      [
+        2.4482183943587907,
+        1.322287157397811
+      ],
+      [
+        9.9427751222577,
+        4.996468180920065
+      ],
+      [
+        17.741839137113303,
+        8.884999380517781
+      ],
+      [
+        25.574292630211232,
+        12.796918022864693
+      ],
+      [
+        33.41681709988981,
+        16.715888138889657
+      ],
+      [
+        41.26369062629408,
+        20.637903019096385
+      ],
+      [
+        49.11283329213647,
+        24.561506437824562
+      ],
+      [
+        56.96330854257292,
+        28.486042723219562
+      ],
+      [
+        64.81463271870146,
+        32.41117328353051
+      ],
+      [
+        72.66653089550076,
+        36.33670565828294
+      ],
+      [
+        80.51883526809479,
+        40.26252237792171
+      ],
+      [
+        88.37143762026102,
+        44.18854768792387
+      ],
+      [
+        96.22426503488731,
+        48.11473054456461
+      ]
+    ],
+    "reference_gain_crossings_rad_s_pm_deg": [
+      [
+        1.7320508075688772,
+        40.60863905926195
+      ]
+    ],
+    "reference_phase_crossings_rad_s_gm": [
+      [
+        2.4482183943588898,
+        1.322287157397857
+      ]
+    ],
+    "gain_crossover_at_dc": false,
+    "max_frequency_absolute_error": 4.0029660424867215e-16,
+    "max_frequency_relative_error": 3.834753719686369e-16,
+    "max_locus_error": 3.556112111387742e-14,
+    "max_step_error": 7.249756350802272e-14,
+    "step_minimum": -0.06265227250760336,
+    "step_final_sample": 0.6804738501197171
+  }
+]

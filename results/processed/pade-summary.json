@@ -1,0 +1,50 @@
+{
+  "critical_exact_analytic_s": 1.2091995761561454,
+  "critical_exact_computed_s": 1.2091995761561454,
+  "critical_frequency_rad_s": 1.7320508075688772,
+  "critical_estimator_status": "finite",
+  "inband_upper_rad_s": 5,
+  "model_delay_s": 0.8,
+  "orders": [
+    {
+      "order": 1,
+      "critical_delay_s": 2.0000000000002314,
+      "critical_reference_control_s": 2.000000000000183,
+      "critical_error_s": 0.790800423844086,
+      "critical_relative_error": 0.6539866862655673,
+      "max_inband_complex_error": 0.608991121072654,
+      "max_inband_phase_error_deg": 100.5516396982498,
+      "status_at_1p01_exact": "stable"
+    },
+    {
+      "order": 2,
+      "critical_delay_s": 1.2360679774997883,
+      "critical_reference_control_s": 1.2360679774997891,
+      "critical_error_s": 0.026868401343642878,
+      "critical_relative_error": 0.02221998905181003,
+      "max_inband_complex_error": 0.20033461799808183,
+      "max_inband_phase_error_deg": 29.31188740325806,
+      "status_at_1p01_exact": "stable"
+    },
+    {
+      "order": 3,
+      "critical_delay_s": 1.2100528801392905,
+      "critical_reference_control_s": 1.210052880139353,
+      "critical_error_s": 0.0008533039831450928,
+      "critical_relative_error": 0.0007056767137295991,
+      "max_inband_complex_error": 0.03067096499201476,
+      "max_inband_phase_error_deg": 4.43994384973633,
+      "status_at_1p01_exact": "unstable"
+    },
+    {
+      "order": 5,
+      "critical_delay_s": 1.2091997521356046,
+      "critical_reference_control_s": 1.2091997521356854,
+      "critical_error_s": 1.7597945922709357e-07,
+      "critical_relative_error": 1.4553384130889668e-07,
+      "max_inband_complex_error": 0.00010167111483199965,
+      "max_inband_phase_error_deg": 0.014714277954356984,
+      "status_at_1p01_exact": "unstable"
+    }
+  ]
+}

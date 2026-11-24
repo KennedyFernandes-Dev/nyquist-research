@@ -1,0 +1,133 @@
+order,method,repetition,wall_ms,cpu_ms
+5,Nyquist,1,1.1865,1.189
+5,Nyquist,2,1.172125,1.173
+5,Nyquist,3,1.041875,1.043
+5,Nyquist,4,1.0285,1.029
+5,Nyquist,5,1.019417,1.021
+5,Nyquist,6,0.9855,0.987
+5,Nyquist,7,1.388208,1.341
+5,Nyquist,8,1.027167,1.028
+5,Nyquist,9,0.998667,0.999
+5,Nyquist,10,1.168333,1.154
+5,Nyquist,11,1.095292,1.096
+5,Routh-Hurwitz,1,0.072958,0.076
+5,Routh-Hurwitz,2,0.070125,0.071
+5,Routh-Hurwitz,3,0.068834,0.07
+5,Routh-Hurwitz,4,0.068708,0.069
+5,Routh-Hurwitz,5,0.068625,0.068
+5,Routh-Hurwitz,6,0.070917,0.072
+5,Routh-Hurwitz,7,0.068917,0.069
+5,Routh-Hurwitz,8,0.067417,0.068
+5,Routh-Hurwitz,9,0.074041,0.075
+5,Routh-Hurwitz,10,0.067417,0.068
+5,Routh-Hurwitz,11,0.068084,0.069
+5,Lugar das Raízes,1,5.995375,5.997
+5,Lugar das Raízes,2,5.9035,5.905
+5,Lugar das Raízes,3,6.097,6.09
+5,Lugar das Raízes,4,5.87875,5.88
+5,Lugar das Raízes,5,5.892041,5.893
+5,Lugar das Raízes,6,5.870125,5.871
+5,Lugar das Raízes,7,5.894,5.895
+5,Lugar das Raízes,8,5.849084,5.85
+5,Lugar das Raízes,9,6.061,6.057
+5,Lugar das Raízes,10,5.844917,5.846
+5,Lugar das Raízes,11,5.693625,5.694
+5,Bode,1,0.703375,0.705
+5,Bode,2,0.688375,0.688
+5,Bode,3,0.679625,0.681
+5,Bode,4,0.6835,0.685
+5,Bode,5,0.691666,0.691
+5,Bode,6,0.680959,0.681
+5,Bode,7,0.687917,0.689
+5,Bode,8,0.68675,0.688
+5,Bode,9,0.679459,0.68
+5,Bode,10,0.683209,0.684
+5,Bode,11,0.671459,0.672
+10,Nyquist,1,1.161375,1.164
+10,Nyquist,2,1.142042,1.143
+10,Nyquist,3,1.131583,1.132
+10,Nyquist,4,1.128333,1.129
+10,Nyquist,5,1.108084,1.109
+10,Nyquist,6,1.102333,1.103
+10,Nyquist,7,1.114709,1.115
+10,Nyquist,8,1.128583,1.13
+10,Nyquist,9,1.228916,1.23
+10,Nyquist,10,1.225375,1.226
+10,Nyquist,11,1.212833,1.213
+10,Routh-Hurwitz,1,0.147125,0.148
+10,Routh-Hurwitz,2,0.140625,0.141
+10,Routh-Hurwitz,3,0.139959,0.14
+10,Routh-Hurwitz,4,0.138667,0.139
+10,Routh-Hurwitz,5,0.142,0.142
+10,Routh-Hurwitz,6,0.138625,0.139
+10,Routh-Hurwitz,7,0.137875,0.14
+10,Routh-Hurwitz,8,0.138333,0.139
+10,Routh-Hurwitz,9,0.14675,0.147
+10,Routh-Hurwitz,10,0.137542,0.138
+10,Routh-Hurwitz,11,0.13925,0.14
+10,Lugar das Raízes,1,9.796834,9.789
+10,Lugar das Raízes,2,9.256333,9.257
+10,Lugar das Raízes,3,9.397333,9.398
+10,Lugar das Raízes,4,9.3945,9.395
+10,Lugar das Raízes,5,9.399083,9.399
+10,Lugar das Raízes,6,9.255791,9.256
+10,Lugar das Raízes,7,9.730583,9.731
+10,Lugar das Raízes,8,8.950667,8.952
+10,Lugar das Raízes,9,8.962916,8.964
+10,Lugar das Raízes,10,8.881666,8.883
+10,Lugar das Raízes,11,8.857833,8.858
+10,Bode,1,0.898541,0.901
+10,Bode,2,0.883584,0.885
+10,Bode,3,0.887083,0.889
+10,Bode,4,0.880458,0.882
+10,Bode,5,0.883042,0.883
+10,Bode,6,0.894625,0.896
+10,Bode,7,0.890208,0.891
+10,Bode,8,0.88275,0.883
+10,Bode,9,0.90775,0.908
+10,Bode,10,0.884959,0.886
+10,Bode,11,0.8805,0.881
+20,Nyquist,1,1.416375,1.42
+20,Nyquist,2,1.398791,1.399
+20,Nyquist,3,1.385,1.386
+20,Nyquist,4,1.391333,1.393
+20,Nyquist,5,1.464792,1.46
+20,Nyquist,6,1.68125,1.682
+20,Nyquist,7,1.479416,1.48
+20,Nyquist,8,1.423625,1.425
+20,Nyquist,9,1.41125,1.413
+20,Nyquist,10,1.411458,1.413
+20,Nyquist,11,1.64775,1.525
+20,Routh-Hurwitz,1,0.262417,0.265
+20,Routh-Hurwitz,2,0.260959,0.262
+20,Routh-Hurwitz,3,0.575542,0.298
+20,Routh-Hurwitz,4,0.421583,0.372
+20,Routh-Hurwitz,5,0.2775,0.278
+20,Routh-Hurwitz,6,0.267209,0.268
+20,Routh-Hurwitz,7,0.264541,0.265
+20,Routh-Hurwitz,8,0.261792,0.263
+20,Routh-Hurwitz,9,0.258292,0.26
+20,Routh-Hurwitz,10,0.262041,0.262
+20,Routh-Hurwitz,11,0.263334,0.264
+20,Lugar das Raízes,1,16.605875,16.575
+20,Lugar das Raízes,2,16.150625,16.152
+20,Lugar das Raízes,3,16.42575,16.422
+20,Lugar das Raízes,4,16.776958,16.753
+20,Lugar das Raízes,5,16.293709,16.293
+20,Lugar das Raízes,6,17.117542,17.114
+20,Lugar das Raízes,7,17.00075,16.979
+20,Lugar das Raízes,8,16.780166,16.734
+20,Lugar das Raízes,9,16.594875,16.596
+20,Lugar das Raízes,10,16.456,16.458
+20,Lugar das Raízes,11,16.469625,16.471
+20,Bode,1,1.373083,1.376
+20,Bode,2,1.372333,1.374
+20,Bode,3,1.358708,1.359
+20,Bode,4,1.344583,1.345
+20,Bode,5,1.347625,1.348
+20,Bode,6,1.352625,1.353
+20,Bode,7,1.468417,1.465
+20,Bode,8,1.464042,1.465
+20,Bode,9,1.413625,1.415
+20,Bode,10,1.403042,1.404
+20,Bode,11,1.398166,1.4

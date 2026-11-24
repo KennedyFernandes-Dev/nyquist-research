@@ -1,0 +1,818 @@
+[
+  {
+    "system": "A",
+    "point": "nominal",
+    "gain": 1.0,
+    "delay_s": 0.0,
+    "expected": "stable",
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "reference_n": 0,
+    "reference_z": 0,
+    "reference_status": "stable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "stable",
+    "nyquist_radius": 11.999999999999998,
+    "nyquist_distance": 0.8086114499051659,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 910,
+    "nyquist_initial_status": "stable",
+    "nyquist_initial_z": 0,
+    "nyquist_initial_max_angle_rad": 0.05586354977308271,
+    "nyquist_initial_contour_samples": 910,
+    "reference_poles": [
+      [
+        -4.0,
+        0.0
+      ],
+      [
+        -1.0,
+        -1.4142135623730951
+      ],
+      [
+        -1.0,
+        1.4142135623730951
+      ]
+    ]
+  },
+  {
+    "system": "A",
+    "point": "fronteira",
+    "gain": 10.0,
+    "delay_s": 0.0,
+    "expected": "marginal",
+    "p": 0,
+    "n": null,
+    "z": null,
+    "nyquist_status": "marginal",
+    "reference_n": null,
+    "reference_z": 0,
+    "reference_status": "marginal",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "marginal",
+    "nyquist_radius": 11.999999999999998,
+    "nyquist_distance": 3.0053021590512957e-16,
+    "nyquist_reason": "A resposta cruza −1 no eixo imaginário dentro da tolerância de fronteira.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 456,
+    "nyquist_initial_status": "marginal",
+    "nyquist_initial_z": null,
+    "nyquist_initial_max_angle_rad": null,
+    "nyquist_initial_contour_samples": 456,
+    "reference_poles": [
+      [
+        -6.0,
+        0.0
+      ],
+      [
+        0.0,
+        -3.3166247903554
+      ],
+      [
+        0.0,
+        3.3166247903554
+      ]
+    ]
+  },
+  {
+    "system": "A",
+    "point": "instável",
+    "gain": 15.0,
+    "delay_s": 0.0,
+    "expected": "unstable",
+    "p": 0,
+    "n": 2,
+    "z": 2,
+    "nyquist_status": "unstable",
+    "reference_n": 2,
+    "reference_z": 2,
+    "reference_status": "unstable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 2,
+    "routh_status": "unstable",
+    "nyquist_radius": 11.999999999999998,
+    "nyquist_distance": 0.19349006691752685,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 914,
+    "nyquist_initial_status": "unstable",
+    "nyquist_initial_z": 2,
+    "nyquist_initial_max_angle_rad": 0.5070079387423604,
+    "nyquist_initial_contour_samples": 914,
+    "reference_poles": [
+      [
+        -6.555779468415003,
+        0.0
+      ],
+      [
+        0.2778897342075014,
+        -3.8165881260130448
+      ],
+      [
+        0.2778897342075014,
+        3.8165881260130448
+      ]
+    ]
+  },
+  {
+    "system": "B",
+    "point": "nominal",
+    "gain": 4.0,
+    "delay_s": 0.0,
+    "expected": "stable",
+    "p": 1,
+    "n": -1,
+    "z": 0,
+    "nyquist_status": "stable",
+    "reference_n": -1,
+    "reference_z": 0,
+    "reference_status": "stable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "stable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 0.33313939212824256,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 912,
+    "nyquist_initial_status": "stable",
+    "nyquist_initial_z": 0,
+    "nyquist_initial_max_angle_rad": 0.21765436996963794,
+    "nyquist_initial_contour_samples": 912,
+    "reference_poles": [
+      [
+        -0.5,
+        -1.3228756555322954
+      ],
+      [
+        -0.5,
+        1.3228756555322954
+      ]
+    ]
+  },
+  {
+    "system": "B",
+    "point": "instável",
+    "gain": 1.0,
+    "delay_s": 0.0,
+    "expected": "unstable",
+    "p": 1,
+    "n": 0,
+    "z": 1,
+    "nyquist_status": "unstable",
+    "reference_n": 0,
+    "reference_z": 1,
+    "reference_status": "unstable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 1,
+    "routh_status": "unstable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 0.5,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 910,
+    "nyquist_initial_status": "unstable",
+    "nyquist_initial_z": 1,
+    "nyquist_initial_max_angle_rad": 0.009978721988333734,
+    "nyquist_initial_contour_samples": 910,
+    "reference_poles": [
+      [
+        -1.618033988749895,
+        0.0
+      ],
+      [
+        0.6180339887498949,
+        0.0
+      ]
+    ]
+  },
+  {
+    "system": "B",
+    "point": "fronteira",
+    "gain": 2.0,
+    "delay_s": 0.0,
+    "expected": "marginal",
+    "p": 1,
+    "n": null,
+    "z": null,
+    "nyquist_status": "marginal",
+    "reference_n": null,
+    "reference_z": 0,
+    "reference_status": "marginal",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "marginal",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 0.0,
+    "nyquist_reason": "A resposta cruza −1 no eixo imaginário dentro da tolerância de fronteira.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 454,
+    "nyquist_initial_status": "marginal",
+    "nyquist_initial_z": null,
+    "nyquist_initial_max_angle_rad": null,
+    "nyquist_initial_contour_samples": 454,
+    "reference_poles": [
+      [
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  {
+    "system": "C",
+    "point": "nominal",
+    "gain": 1.0,
+    "delay_s": 0.0,
+    "expected": "stable",
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "reference_n": 0,
+    "reference_z": 0,
+    "reference_status": "stable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "stable",
+    "nyquist_radius": 8.0,
+    "nyquist_distance": 0.6497781268464016,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 910,
+    "nyquist_initial_status": "stable",
+    "nyquist_initial_z": 0,
+    "nyquist_initial_max_angle_rad": 0.06275000746657658,
+    "nyquist_initial_contour_samples": 910,
+    "reference_poles": [
+      [
+        -1.0,
+        -1.4142135623730951
+      ],
+      [
+        -1.0,
+        1.4142135623730951
+      ]
+    ]
+  },
+  {
+    "system": "C",
+    "point": "fronteira",
+    "gain": 3.0,
+    "delay_s": 0.0,
+    "expected": "marginal",
+    "p": 0,
+    "n": null,
+    "z": null,
+    "nyquist_status": "marginal",
+    "reference_n": null,
+    "reference_z": 0,
+    "reference_status": "marginal",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "marginal",
+    "nyquist_radius": 8.0,
+    "nyquist_distance": 4.625929269271486e-17,
+    "nyquist_reason": "A resposta cruza −1 no eixo imaginário dentro da tolerância de fronteira.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 456,
+    "nyquist_initial_status": "marginal",
+    "nyquist_initial_z": null,
+    "nyquist_initial_max_angle_rad": null,
+    "nyquist_initial_contour_samples": 456,
+    "reference_poles": [
+      [
+        0.0,
+        -2.23606797749979
+      ],
+      [
+        0.0,
+        2.23606797749979
+      ]
+    ]
+  },
+  {
+    "system": "C",
+    "point": "instável",
+    "gain": 5.0,
+    "delay_s": 0.0,
+    "expected": "unstable",
+    "p": 0,
+    "n": 2,
+    "z": 2,
+    "nyquist_status": "unstable",
+    "reference_n": 2,
+    "reference_z": 2,
+    "reference_status": "unstable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 2,
+    "routh_status": "unstable",
+    "nyquist_radius": 16.0,
+    "nyquist_distance": 0.5512680174565643,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 912,
+    "nyquist_initial_status": "unstable",
+    "nyquist_initial_z": 2,
+    "nyquist_initial_max_angle_rad": 0.26882350025552676,
+    "nyquist_initial_contour_samples": 912,
+    "reference_poles": [
+      [
+        1.0,
+        -2.449489742783178
+      ],
+      [
+        1.0,
+        2.449489742783178
+      ]
+    ]
+  },
+  {
+    "system": "D",
+    "point": "nominal",
+    "gain": 1.0,
+    "delay_s": 0.8,
+    "expected": "stable",
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "reference_n": null,
+    "reference_z": 0,
+    "reference_status": "stable",
+    "reference_method": "Cruzamentos analíticos + Lambert W, 65 dígitos",
+    "routh_rhp": null,
+    "routh_status": "not_applicable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 0.23345699514710855,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 912,
+    "nyquist_initial_status": "stable",
+    "nyquist_initial_z": 0,
+    "nyquist_initial_max_angle_rad": 0.49685017982821067,
+    "nyquist_initial_contour_samples": 912,
+    "reference_poles": [
+      [
+        -4.491031162124498,
+        -72.58926021935726
+      ],
+      [
+        -4.348031304423721,
+        -64.73075301425007
+      ],
+      [
+        -4.186515837900374,
+        -56.87140225483592
+      ],
+      [
+        -4.000959359298141,
+        -49.010942655570545
+      ],
+      [
+        -3.782917522922485,
+        -41.14899427832862
+      ],
+      [
+        -3.518518404766331,
+        -33.285020301277314
+      ],
+      [
+        -3.182497285896507,
+        -25.418374186743787
+      ],
+      [
+        -2.7208127831175095,
+        -17.549279215031483
+      ],
+      [
+        -1.9789902111972604,
+        -9.69163649955883
+      ],
+      [
+        -0.2588952670366786,
+        -2.345975055861674
+      ],
+      [
+        -0.2588952670366786,
+        2.345975055861674
+      ],
+      [
+        -1.9789902111972604,
+        9.69163649955883
+      ],
+      [
+        -2.7208127831175095,
+        17.549279215031483
+      ],
+      [
+        -3.182497285896507,
+        25.418374186743787
+      ],
+      [
+        -3.518518404766331,
+        33.285020301277314
+      ],
+      [
+        -3.782917522922485,
+        41.14899427832862
+      ],
+      [
+        -4.000959359298141,
+        49.010942655570545
+      ],
+      [
+        -4.186515837900374,
+        56.87140225483592
+      ],
+      [
+        -4.348031304423721,
+        64.73075301425007
+      ],
+      [
+        -4.491031162124498,
+        72.58926021935726
+      ],
+      [
+        -4.6193297854395485,
+        80.44711192516215
+      ]
+    ]
+  },
+  {
+    "system": "D",
+    "point": "sem atraso",
+    "gain": 1.0,
+    "delay_s": 0.0,
+    "expected": "stable",
+    "p": 0,
+    "n": 0,
+    "z": 0,
+    "nyquist_status": "stable",
+    "reference_n": 0,
+    "reference_z": 0,
+    "reference_status": "stable",
+    "reference_method": "SymPy nroots, 35 dígitos",
+    "routh_rhp": 0,
+    "routh_status": "stable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 1.2126781251816647,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 912,
+    "nyquist_initial_status": "stable",
+    "nyquist_initial_z": 0,
+    "nyquist_initial_max_angle_rad": 0.01952752224675494,
+    "nyquist_initial_contour_samples": 912,
+    "reference_poles": [
+      [
+        -3.0,
+        0.0
+      ]
+    ]
+  },
+  {
+    "system": "D",
+    "point": "fronteira",
+    "gain": 1.0,
+    "delay_s": 1.2091995761561454,
+    "expected": "marginal",
+    "p": 0,
+    "n": null,
+    "z": null,
+    "nyquist_status": "marginal",
+    "reference_n": null,
+    "reference_z": 0,
+    "reference_status": "marginal",
+    "reference_method": "Cruzamentos analíticos + Lambert W, 65 dígitos",
+    "routh_rhp": null,
+    "routh_status": "not_applicable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 1.6653345369377348e-16,
+    "nyquist_reason": "A resposta cruza −1 no eixo imaginário dentro da tolerância de fronteira.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 470,
+    "nyquist_initial_status": "marginal",
+    "nyquist_initial_z": null,
+    "nyquist_initial_max_angle_rad": null,
+    "nyquist_initial_contour_samples": 470,
+    "reference_poles": [
+      [
+        -2.629331191820723,
+        -48.036370121296144
+      ],
+      [
+        -2.534680585570756,
+        -42.838643382136766
+      ],
+      [
+        -2.427770424669643,
+        -37.64075099215131
+      ],
+      [
+        -2.304943550919263,
+        -32.44270639597956
+      ],
+      [
+        -2.1606147191104967,
+        -27.244591739031534
+      ],
+      [
+        -1.9856226815426576,
+        -22.046700725617473
+      ],
+      [
+        -1.7633415992915804,
+        -16.850056502291263
+      ],
+      [
+        -1.4585597066000542,
+        -11.658832796557453
+      ],
+      [
+        -0.974546373359429,
+        -6.498429752771708
+      ],
+      [
+        4.4958630253861616e-17,
+        -1.7320508075688772
+      ],
+      [
+        4.4958630253861616e-17,
+        1.7320508075688772
+      ],
+      [
+        -0.974546373359429,
+        6.498429752771708
+      ],
+      [
+        -1.4585597066000542,
+        11.658832796557453
+      ],
+      [
+        -1.7633415992915804,
+        16.850056502291263
+      ],
+      [
+        -1.9856226815426576,
+        22.046700725617473
+      ],
+      [
+        -2.1606147191104967,
+        27.244591739031534
+      ],
+      [
+        -2.304943550919263,
+        32.44270639597956
+      ],
+      [
+        -2.427770424669643,
+        37.64075099215131
+      ],
+      [
+        -2.534680585570756,
+        42.838643382136766
+      ],
+      [
+        -2.629331191820723,
+        48.036370121296144
+      ],
+      [
+        -2.7142477374344196,
+        53.23394056239851
+      ]
+    ]
+  },
+  {
+    "system": "D",
+    "point": "instável",
+    "gain": 1.0,
+    "delay_s": 1.6,
+    "expected": "unstable",
+    "p": 0,
+    "n": 2,
+    "z": 2,
+    "nyquist_status": "unstable",
+    "reference_n": null,
+    "reference_z": 2,
+    "reference_status": "unstable",
+    "reference_method": "Cruzamentos analíticos + Lambert W, 65 dígitos",
+    "routh_rhp": null,
+    "routh_status": "not_applicable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 0.1701505908048056,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": null,
+    "nyquist_contour_samples": 918,
+    "nyquist_initial_status": "unstable",
+    "nyquist_initial_z": 2,
+    "nyquist_initial_max_angle_rad": 0.658091405012091,
+    "nyquist_initial_contour_samples": 918,
+    "reference_poles": [
+      [
+        -1.8120093814023737,
+        -36.310690624822115
+      ],
+      [
+        -1.7404747969635543,
+        -32.38338555142514
+      ],
+      [
+        -1.6596796357331915,
+        -28.456197090507917
+      ],
+      [
+        -1.5668663286360243,
+        -24.52925154572509
+      ],
+      [
+        -1.4578296264118282,
+        -20.602815510839232
+      ],
+      [
+        -1.3256902489993332,
+        -16.677507077825783
+      ],
+      [
+        -1.1580319429888843,
+        -12.75497691023503
+      ],
+      [
+        -0.9289108852815732,
+        -8.840754897649077
+      ],
+      [
+        -0.5703373452240629,
+        -4.962715261203146
+      ],
+      [
+        0.07902374831475535,
+        -1.3935438445084556
+      ],
+      [
+        0.07902374831475535,
+        1.3935438445084556
+      ],
+      [
+        -0.5703373452240629,
+        4.962715261203146
+      ],
+      [
+        -0.9289108852815732,
+        8.840754897649077
+      ],
+      [
+        -1.1580319429888843,
+        12.75497691023503
+      ],
+      [
+        -1.3256902489993332,
+        16.677507077825783
+      ],
+      [
+        -1.4578296264118282,
+        20.602815510839232
+      ],
+      [
+        -1.5668663286360243,
+        24.52925154572509
+      ],
+      [
+        -1.6596796357331915,
+        28.456197090507917
+      ],
+      [
+        -1.7404747969635543,
+        32.38338555142514
+      ],
+      [
+        -1.8120093814023737,
+        36.310690624822115
+      ],
+      [
+        -1.8761892945451946,
+        40.23804855962524
+      ]
+    ]
+  },
+  {
+    "system": "D",
+    "point": "dois pares",
+    "gain": 1.0,
+    "delay_s": 5.0,
+    "expected": "unstable",
+    "p": 0,
+    "n": 4,
+    "z": 4,
+    "nyquist_status": "unstable",
+    "reference_n": null,
+    "reference_z": 4,
+    "reference_status": "unstable",
+    "reference_method": "Cruzamentos analíticos + Lambert W, 65 dígitos",
+    "routh_rhp": null,
+    "routh_status": "not_applicable",
+    "nyquist_radius": 4.0,
+    "nyquist_distance": 0.02365516331141739,
+    "nyquist_reason": "Contagem consistente após refinamento do contorno.",
+    "nyquist_requested_points": 1024,
+    "nyquist_contour_samples": 4874,
+    "nyquist_initial_status": "unstable",
+    "nyquist_initial_z": 4,
+    "nyquist_initial_max_angle_rad": 0.6647552151862214,
+    "nyquist_initial_contour_samples": 1034,
+    "reference_poles": [
+      [
+        -0.35248356701229344,
+        -11.635011830244089
+      ],
+      [
+        -0.32976570760506063,
+        -10.38015162210004
+      ],
+      [
+        -0.3041722226212505,
+        -9.125838863352655
+      ],
+      [
+        -0.27488675311333494,
+        -7.8723515704838585
+      ],
+      [
+        -0.24070208913119615,
+        -6.620183651151119
+      ],
+      [
+        -0.1997433193484654,
+        -5.370292898317835
+      ],
+      [
+        -0.14894142201991803,
+        -4.1247651779975625
+      ],
+      [
+        -0.08314247141623642,
+        -2.8888969940992855
+      ],
+      [
+        0.004429005241998724,
+        -1.6786387631287185
+      ],
+      [
+        0.09840287568468116,
+        -0.537326284832543
+      ],
+      [
+        0.09840287568468116,
+        0.537326284832543
+      ],
+      [
+        0.004429005241998724,
+        1.6786387631287185
+      ],
+      [
+        -0.08314247141623642,
+        2.8888969940992855
+      ],
+      [
+        -0.14894142201991803,
+        4.1247651779975625
+      ],
+      [
+        -0.1997433193484654,
+        5.370292898317835
+      ],
+      [
+        -0.24070208913119615,
+        6.620183651151119
+      ],
+      [
+        -0.27488675311333494,
+        7.8723515704838585
+      ],
+      [
+        -0.3041722226212505,
+        9.125838863352655
+      ],
+      [
+        -0.32976570760506063,
+        10.38015162210004
+      ],
+      [
+        -0.35248356701229344,
+        11.635011830244089
+      ],
+      [
+        -0.372901231259026,
+        12.890252028575942
+      ]
+    ]
+  }
+]
