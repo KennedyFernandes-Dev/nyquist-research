@@ -197,7 +197,8 @@ def _performance() -> str:
                           linewidth=1.1, label=method)
         axis.set(ylabel="Tempo por execução (ms)", xlabel="Ordem", title=title, yscale="log",
                  xticks=(5, 10, 20))
-    axes[0].legend(frameon=False, fontsize=6, loc="best")
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="outside lower center", ncol=4, frameon=False, fontsize=6)
     return _save(fig, "scalability")
 
 

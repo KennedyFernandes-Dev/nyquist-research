@@ -33,7 +33,7 @@ def csv_result(path: str, rows: list[dict]) -> None:
     target = RESULTS / path
     target.parent.mkdir(exist_ok=True, parents=True)
     with target.open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
