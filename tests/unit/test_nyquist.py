@@ -1,0 +1,93 @@
+from math import pi, sqrt
+
+import numpy as np
+import pytest
+from hypothesis import given, settings
+from hypothesis import strategies as st
+
+from nyquist_research.frequency_response import frequency_grid, frequency_response
+from nyquist_research.nyquist import nyquist
+from nyquist_research.transfer_function import TransferFunction
+from nyquist_research.winding_number import winding_number
+
+
+def test_complex_response_and_polynomial_operations():
+    system = TransferFunction([0, 4, 2], [2, 6, 4], gain=2)
+    assert system.numerator == (2.0, 1.0)
+    np.testing.assert_allclose(sorted(system.poles), [-2, -1])
+    np.testing.assert_allclose(system.zeros, [-0.5])
+    np.testing.assert_allclose(system.characteristic(), [1, 7, 4])
+    values = frequency_response(system, [0, 1, 12])
+    points = np.array([0, 1j, 12j])
+    np.testing.assert_allclose(values, 2 * (2 * points + 1) / (points**2 + 3 * points + 2))
+    assert np.all(np.diff(frequency_grid(system, points=37)) > 0)
+
+
+@pytest.mark.parametrize(
+    "numerator,denominator,gain,delay",
+    [
+        ([1], [0], 1, 0),
+        ([1, 0], [1], 1, 0),
+        ([1], [1, -1], float("nan"), 0),
+        ([1], [1, -1], 1, -1),
+        ([1j], [1, -1], 1, 0),
+        ([1], [1, float("inf")], 1, 0),
+    ],
+)
+def test_invalid_model(numerator, denominator, gain, delay):
+    with pytest.raises(ValueError):
+        TransferFunction(numerator, denominator, gain, delay)
+
+
+def test_winding_orientation_and_multiplicity():
+    loop = -1 + 0.4 * np.exp(-1j * np.linspace(0, 4 * pi, 129))
+    assert winding_number(loop).turns == 2
+    assert winding_number(loop[::-1]).turns == -2
+    assert winding_number(loop, center=-2).turns == 0
+    with pytest.raises(ValueError):
+        winding_number([-1, 0, 1j])
+
+
+@pytest.mark.parametrize(
+    "system, expected",
+    [
+        (TransferFunction([6], [1, 6, 11, 6]), (0, 0, 0, "stable")),
+        (TransferFunction([6], [1, 6, 11, 6], 11), (0, 2, 2, "unstable")),
+        (TransferFunction([1], [1, 1, -2], 4), (1, -1, 0, "stable")),
+        (TransferFunction([1], [1, 1, -2]), (1, 0, 1, "unstable")),
+        (TransferFunction([-1, 1], [1, 3, 2], 4), (0, 2, 2, "unstable")),
+        (TransferFunction([2], [1, 1], delay=1.5), (0, 2, 2, "unstable")),
+        (TransferFunction([1], [1, 0]), (0, 0, 0, "stable")),
+        (TransferFunction([8], [1, 3, 3, 1]), (0, None, None, "marginal")),
+        (TransferFunction([2], [1, 1], delay=2 * pi / (3 * sqrt(3))), (0, None, None, "marginal")),
+    ],
+)
+def test_contour_and_closed_loop_counts(system, expected):
+    result = nyquist(system)
+    assert (result.p, result.n, result.z, result.status) == expected
+    assert result.contour[0] == result.contour[-1]
+    assert np.all(result.contour.real >= 0)
+    assert np.all(np.isfinite(result.mapped))
+
+
+def test_delay_model_and_biproper_limit():
+    delayed = TransferFunction([1], [1, 1], delay=2)
+    np.testing.assert_allclose(delayed.evaluate(3j), np.exp(-6j) / (1 + 3j))
+    with pytest.raises(ValueError):
+        delayed.characteristic()
+    assert nyquist(TransferFunction([2, 0], [1, 1], delay=2)).status == "indeterminate"
+    assert nyquist(TransferFunction([0.5, 0], [1, 1], delay=2)).status == "stable"
+    assert nyquist(TransferFunction([-1, 0], [1, 1])).status == "indeterminate"
+
+
+@settings(max_examples=20, deadline=None)
+@given(pole=st.floats(0.01, 100), gain=st.floats(0.01, 100))
+def test_positive_first_order_always_stable(pole, gain):
+    system = TransferFunction([1], [1, pole], gain)
+    assert nyquist(system).status == "stable"
+    np.testing.assert_allclose(np.roots(system.characteristic()), [-pole - gain])
+
+
+def test_horner_ratio_at_large_complex_arguments():
+    system = TransferFunction([1, 0, 0], [1, 0, 0, 0, 1])
+    assert system.evaluate(1e150j) == pytest.approx(-1e-300)
