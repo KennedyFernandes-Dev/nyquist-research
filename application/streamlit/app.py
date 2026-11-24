@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import asdict, is_dataclass
+from dataclasses import asdict, dataclass, is_dataclass
 from pathlib import Path
 
 import numpy as np
@@ -16,7 +16,7 @@ from nyquist_research.bode import bode
 from nyquist_research.nyquist import nyquist
 from nyquist_research.pade import approximate_delay
 from nyquist_research.root_locus import root_locus
-from nyquist_research.routh_hurwitz import routh_hurwitz
+from nyquist_research.routh_hurwitz import RouthResult, routh_hurwitz
 from nyquist_research.step_response import step_response
 from nyquist_research.time_delay import critical_delay
 from nyquist_research.transfer_function import TransferFunction
@@ -175,6 +175,21 @@ def _degrau(model, duration):
     return {"time": time, "output": step_response(model, time)}
 
 
+@dataclass(frozen=True)
+class _RouthIndeterminate:
+    reason: str
+    status: str = "indeterminate"
+
+
+def _routh(model):
+    characteristic = model.characteristic()
+    if characteristic[0] == 0:
+        return _RouthIndeterminate(
+            "Realimentação algébrica singular. A característica perde grau neste ganho."
+        )
+    return routh_hurwitz(characteristic)
+
+
 @st.cache_data(show_spinner=False, max_entries=24)
 def _compute(system, pade_order, gain_max, duration):
     results = {
@@ -190,7 +205,7 @@ def _compute(system, pade_order, gain_max, duration):
         results.update({key: (None, approximation_error) for key in ("routh", "locus", "step")})
     else:
         gains = np.unique(np.r_[np.linspace(0, max(gain_max, system.gain), 141), system.gain])
-        results["routh"] = _attempt(lambda model: routh_hurwitz(model.characteristic()), rational)
+        results["routh"] = _attempt(_routh, rational)
         results["locus"] = _attempt(root_locus, rational, gains)
         results["step"] = _attempt(_degrau, rational, duration)
     return rational, results
@@ -261,17 +276,18 @@ def _locus_figure(result, model):
                 hovertemplate="Re %{x:.4g}<br>Im %{y:.4g}<br>K %{customdata:.4g}<extra></extra>",
             )
         )
-    index = int(np.searchsorted(result.gains, model.gain))
-    current = result.roots[index]
-    chart.add_trace(
-        _scatter(
-            current.real,
-            current.imag,
-            "Polos no ganho K",
-            mode="markers",
-            marker={"color": _ACCENT, "size": 10, "symbol": "x"},
+    if model.gain not in result.degree_drops:
+        index = int(np.searchsorted(result.gains, model.gain))
+        current = result.roots[index]
+        chart.add_trace(
+            _scatter(
+                current.real,
+                current.imag,
+                "Polos no ganho K",
+                mode="markers",
+                marker={"color": _ACCENT, "size": 10, "symbol": "x"},
+            )
         )
-    )
     zeros = model.zeros
     if zeros.size:
         chart.add_trace(
@@ -522,7 +538,7 @@ def main():
             st.warning(step_error)
 
     st.subheader("Routh-Hurwitz")
-    if rh is not None:
+    if isinstance(rh, RouthResult):
         count = str(rh.rhp) if rh.rhp is not None else "indeterminada"
         st.caption(f"{_status(rh)} · contagem à direita {count} · polos no eixo {rh.axis}")
         table = {"Potência de s": np.arange(rh.table.shape[0] - 1, -1, -1)}
@@ -532,6 +548,8 @@ def main():
             st.caption(event)
         if ny is not None and ny.status != rh.status:
             st.caption("Os estados de Nyquist e Routh-Hurwitz diferem para os modelos avaliados.")
+    elif isinstance(rh, _RouthIndeterminate):
+        st.warning(f"{_status(rh)} · {rh.reason}")
     if rh_error:
         st.warning(rh_error)
     _show_comparison(system, results, pade_order)

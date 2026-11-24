@@ -68,3 +68,21 @@ def test_custom_coefficients_and_pole_edit_are_consistent():
     updated = app.session_state["edited_models"]["Personalizado"]
     np.testing.assert_allclose(updated.denominator, [1, 2, 5])
     assert not app.exception
+
+
+def test_singular_feedback_does_not_report_routh_stability():
+    app = _app()
+    app.selectbox[0].set_value("Personalizado").run()
+    app.text_input(key="numerator-Personalizado").set_value("-1, 0")
+    app.text_input(key="denominator-Personalizado").set_value("1, 1").run()
+    assert _metrics(app)[0] == "Indeterminada"
+    assert any(
+        "Indeterminada · Realimentação algébrica singular" in warning.value
+        for warning in app.warning
+    )
+    assert any("Laço algébrico singular" in warning.value for warning in app.warning)
+    assert any("perde grau em K = 1" in caption.value for caption in app.caption)
+    assert not any("Estável · contagem" in caption.value for caption in app.caption)
+    charts = app.get("plotly_chart")
+    assert len(charts) == 2
+    assert "Polos no ganho K" not in charts[0].proto.spec
